@@ -167,8 +167,8 @@ export default function HomePage() {
           centered
         />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {doctors.map((doctor) => (
-            <DoctorCard key={doctor.id} doctor={doctor} />
+          {doctors.map((doctor, index) => (
+            <DoctorCard key={doctor.id} doctor={doctor} priority={index < 3} />
           ))}
         </div>
       </SectionContainer>

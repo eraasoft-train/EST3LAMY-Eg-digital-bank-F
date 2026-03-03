@@ -22,9 +22,10 @@ interface DoctorCardProps {
     location?: string
     languages?: string[]
   }
+  priority?: boolean
 }
 
-export const DoctorCard = memo(function DoctorCard({ doctor }: DoctorCardProps) {
+export const DoctorCard = memo(function DoctorCard({ doctor, priority = false }: DoctorCardProps) {
   const slug = slugify(doctor.name)
 
   return (
@@ -37,6 +38,9 @@ export const DoctorCard = memo(function DoctorCard({ doctor }: DoctorCardProps) 
             width={400}
             height={300}
             className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+            priority={priority}
+            loading={priority ? "eager" : "lazy"}
+            fetchPriority={priority ? "high" : "auto"}
           />
           <Badge className="absolute top-4 right-4 bg-primary">
             Available
