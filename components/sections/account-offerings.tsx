@@ -31,7 +31,7 @@ export function AccountOfferings() {
       name: "Business Banking",
       icon: Building2,
       description: "Banking solutions for your business",
-      features: ["Business checking", "Merchant services", "Business loans", "Cash management"],
+      features: ["Business checking", "Merchant services", "Business Finovia", "Cash management"],
       rate: "Custom rates",
       color: "purple",
     },

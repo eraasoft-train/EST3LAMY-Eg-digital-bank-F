@@ -59,7 +59,7 @@ export default function ContactPage() {
                    </div>
                    <div className="space-y-2">
                      <label className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Subject</label>
-                     <Input placeholder="Inquiry about Loan Rates" className="bg-gray-50 dark:bg-gray-800 border-none h-12" />
+                     <Input placeholder="Inquiry about Finovia Rates" className="bg-gray-50 dark:bg-gray-800 border-none h-12" />
                    </div>
                    <div className="space-y-2">
                      <label className="text-sm font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wider">Message</label>

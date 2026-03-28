@@ -15,7 +15,7 @@ export const businessSolutions = [
     features: ["Fraud prevention services", "Remote deposit capture", "Automated accounts payable", "Real-time liquidity monitoring"]
   },
   {
-    title: "SBA & Commercial Loans",
+    title: "SBA & Commercial Finovia",
     description: "Fuel your expansion with competitive business lending.",
     icon: React.createElement(Rocket, { className: "h-6 w-6 text-purple-600" }),
     features: ["Equipment financing", "Real estate loans", "Working capital lines of credit", "Low down-payment SBA loans"]

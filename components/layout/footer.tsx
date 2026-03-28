@@ -4,7 +4,7 @@ import { Shield, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 export function Footer() {
   const footerLinks = {
     Banking: ["Checking Accounts", "Savings Accounts", "Business Banking", "Student Accounts"],
-    Finovia: ["Home Loans", "Auto Loans", "Personal Loans", "Credit Cards"],
+    Finovia: ["Home Finovia", "Auto Finovia", "Personal Finovia", "Credit Cards"],
     Support: ["Help Center", "Contact Us", "Branch Locator", "Security Center"],
     Company: ["About Us", "Careers", "Investor Relations", "Press Room"],
   }
@@ -50,7 +50,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Finovia. All rights reserved. Member FDIC. Equal Housing Lender.
+              © {new Date().getFullYear()} Finovia. All rights reserved. Member FDIC. Equal Housing Lender.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link href="#" className="text-gray-400 hover:text-white">

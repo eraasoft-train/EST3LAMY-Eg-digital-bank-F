@@ -3,7 +3,7 @@ import { Home, Car, User, Building } from "lucide-react"
 export const loanTypes = [
   {
     id: "home",
-    name: "Home Loans",
+    name: "Home Finovia",
     icon: Home,
     description: "Competitive rates for your dream home",
     rate: "From 3.25% APR",
@@ -11,7 +11,7 @@ export const loanTypes = [
   },
   {
     id: "auto",
-    name: "Auto Loans",
+    name: "Auto Finovia",
     icon: Car,
     description: "Finance your next vehicle",
     rate: "From 2.99% APR",
@@ -19,7 +19,7 @@ export const loanTypes = [
   },
   {
     id: "personal",
-    name: "Personal Loans",
+    name: "Personal Finovia",
     icon: User,
     description: "Flexible financing for life events",
     rate: "From 5.99% APR",
@@ -27,7 +27,7 @@ export const loanTypes = [
   },
   {
     id: "business",
-    name: "Business Loans",
+    name: "Business Finovia",
     icon: Building,
     description: "Fuel your business growth",
     rate: "Custom rates",

@@ -41,7 +41,7 @@ export default function FinoviaPage() {
         >
           <Card className="max-w-4xl mx-auto border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden bg-gradient-to-br from-white to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
             <CardHeader className="text-center bg-blue-600 dark:bg-blue-800 text-white p-8">
-              <CardTitle className="text-2xl">Mortgage Payment Estimator</CardTitle>
+              <CardTitle className="text-2xl">Finovia Payment Estimator</CardTitle>
               <CardDescription className="text-blue-100">See how much you could save with our competitive rates.</CardDescription>
             </CardHeader>
             <CardContent className="p-8 md:p-12">
@@ -49,7 +49,7 @@ export default function FinoviaPage() {
                 <div className="space-y-8">
                   <div className="space-y-4">
                     <div className="flex justify-between">
-                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300 italic">Loan Amount</label>
+                      <label className="text-sm font-medium text-gray-700 dark:text-gray-300 italic">Finovia Amount</label>
                       <span className="text-lg font-bold text-blue-600 dark:text-blue-400">${loanAmount.toLocaleString('en-US')}</span>
                     </div>
                     <Slider
@@ -109,9 +109,9 @@ export default function FinoviaPage() {
         {/* Advisor CTA */}
         <div className="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-3xl p-12 text-white text-center shadow-2xl relative overflow-hidden">
           <div className="relative z-10">
-            <h2 className="text-3xl font-bold mb-4">Need personalized loan advice?</h2>
+            <h2 className="text-3xl font-bold mb-4">Need personalized Finovia advice?</h2>
             <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-              Our financial experts are available 24/7 to help you choose the best lending strategy for your unique situation.
+              Our financial experts are available 24/7 to help you choose the best Finovia strategy for your unique situation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" className="bg-white text-blue-800 hover:bg-blue-50 px-8 py-3">Schedule a Call</Button>

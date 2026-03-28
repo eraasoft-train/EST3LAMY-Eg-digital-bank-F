@@ -3,21 +3,21 @@ import { Home, Car, TrendingUp, HardHat } from "lucide-react"
 
 export const loanProducts = [
   {
-    title: "Mortgage Loans",
+    title: "Mortgage Finovia",
     description: "Low fixed rates and flexible terms for your dream home.",
     icon: React.createElement(Home, { className: "h-6 w-6 text-blue-600" }),
     rate: "From 4.25% APR",
     badge: "Fixed Rate"
   },
   {
-    title: "Auto Loans",
+    title: "Auto Finovia",
     description: "Fast approval and competitive rates for your next vehicle.",
     icon: React.createElement(Car, { className: "h-6 w-6 text-teal-600" }),
     rate: "From 3.50% APR",
     badge: "Quick Approval"
   },
   {
-    title: "Personal Loans",
+    title: "Personal Finovia",
     description: "No-collateral loans for life's biggest milestones.",
     icon: React.createElement(TrendingUp, { className: "h-6 w-6 text-purple-600" }),
     rate: "From 6.99% APR",

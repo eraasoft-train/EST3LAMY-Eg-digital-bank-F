@@ -16,7 +16,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Finovia - Modern Banking Solutions",
   description: "Secure, innovative banking for the digital age. Open your account today with Finovia.",
-  keywords: "banking, fintech, digital banking, loans, savings, checking account",
+  keywords: "banking, fintech, digital banking, finovia, savings, checking account",
   openGraph: {
     title: "Finovia - Modern Banking Solutions",
     description: "Secure, innovative banking for the digital age",

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Shield, Moon, Sun, Globe } from "lucide-react"
 import { useTheme } from "next-themes"
@@ -11,6 +12,7 @@ import { navigation } from "@/data/navigation"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
   const { theme, setTheme } = useTheme()
 
   return (
@@ -31,7 +33,11 @@ export function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                className={`text-sm font-medium transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${
+                  pathname === item.href
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-gray-700 dark:text-gray-300"
+                }`}
               >
                 {item.name}
               </Link>
@@ -81,7 +87,11 @@ export function Navbar() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  className={`block px-3 py-2 text-base font-medium transition-colors ${
+                    pathname === item.href
+                      ? "text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20"
+                      : "text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}

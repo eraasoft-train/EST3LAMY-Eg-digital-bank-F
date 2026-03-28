@@ -55,13 +55,13 @@ export function FinoviaTools() {
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
                   <Calculator className="h-5 w-5" />
-                  <span>Loan Calculator</span>
+                  <span>Finovia Calculator</span>
                 </CardTitle>
                 <CardDescription>Calculate your monthly payment and see what you can afford</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <Label>Loan Amount: ${loanAmount[0].toLocaleString('en-US')}</Label>
+                  <Label>Finovia Amount: ${loanAmount[0].toLocaleString('en-US')}</Label>
                   <Slider
                     value={loanAmount}
                     onValueChange={setLoanAmount}
@@ -73,7 +73,7 @@ export function FinoviaTools() {
                 </div>
 
                 <div>
-                  <Label>Loan Term: {loanTerm[0]} years</Label>
+                   <Label>Finovia Term: {loanTerm[0]} years</Label>
                   <Slider value={loanTerm} onValueChange={setLoanTerm} max={30} min={5} step={1} className="mt-2" />
                 </div>
 
