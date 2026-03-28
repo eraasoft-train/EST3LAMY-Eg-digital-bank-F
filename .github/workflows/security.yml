@@ -25,7 +25,7 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       
       - name: Run npm audit
         run: npm audit --audit-level=moderate
@@ -78,7 +78,7 @@ jobs:
         uses: trufflesecurity/trufflehog@main
         with:
           path: ./
-          extra_args: --debug --only-verified
+          extra_args: --only-verified
 
   license-check:
     name: License Compliance Check
@@ -95,7 +95,7 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: npm install
       
       - name: Check licenses
         run: npx license-checker --summary

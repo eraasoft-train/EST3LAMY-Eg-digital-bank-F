@@ -99,14 +99,14 @@ Then create a Pull Request on GitHub.
 
 ```typescript
 // Good
-interface Recipe {
+interface Account {
   id: string;
-  title: string;
-  ingredients: string[];
+  balance: number;
+  transactions: Transaction[];
 }
 
 // Bad
-const recipe: any = { title: 'Food' };
+const account: any = { balance: 1000 };
 ```
 
 ### React Components
@@ -144,10 +144,10 @@ export const Modal: React.FC<Props> = ({ title, onClose }) => {
 
 ### File Naming
 
-- Use kebab-case for files: `recipe-card.tsx`
-- Use PascalCase for components: `RecipeCard`
-- Use camelCase for variables: `recipeList`
-- Use UPPER_CASE for constants: `MAX_RECIPES`
+- Use kebab-case for files: `account-card.tsx`
+- Use PascalCase for components: `AccountCard`
+- Use camelCase for variables: `accountList`
+- Use UPPER_CASE for constants: `MAX_TRANSFER_LIMIT`
 
 ## Commit Guidelines
 
@@ -170,7 +170,7 @@ export const Modal: React.FC<Props> = ({ title, onClose }) => {
 ### Examples
 
 ```
-feat(recipes): add recipe filtering by category
+feat(accounts): add transaction filtering by date
 
 fix(search): resolve search bar not clearing issue
 ```
