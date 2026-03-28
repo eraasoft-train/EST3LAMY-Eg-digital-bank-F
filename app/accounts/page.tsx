@@ -36,7 +36,7 @@ export default function AccountsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
             >
-              <Card className="h-full border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow bg-background/50 backdrop-blur-sm relative overflow-hidden group">
+              <Card className="h-full border-gray-200 dark:border-gray-800 hover:shadow-lg transition-shadow bg-background/50 backdrop-blur-xs relative overflow-hidden group">
                 {account.badge && (
                   <Badge className="absolute top-4 right-4 bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 border-none">
                     {account.badge}

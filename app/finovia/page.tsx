@@ -39,7 +39,7 @@ export default function FinoviaPage() {
           animate={{ opacity: 1, scale: 1 }}
           className="mb-24"
         >
-          <Card className="max-w-4xl mx-auto border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden bg-gradient-to-br from-white to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
+          <Card className="max-w-4xl mx-auto border-gray-200 dark:border-gray-800 shadow-xl overflow-hidden bg-linear-to-br from-white to-blue-50/30 dark:from-gray-900 dark:to-gray-800">
             <CardHeader className="text-center bg-blue-600 dark:bg-blue-800 text-white p-8">
               <CardTitle className="text-2xl">Finovia Payment Estimator</CardTitle>
               <CardDescription className="text-blue-100">See how much you could save with our competitive rates.</CardDescription>
@@ -107,7 +107,7 @@ export default function FinoviaPage() {
         </div>
 
         {/* Advisor CTA */}
-        <div className="bg-gradient-to-r from-blue-700 to-indigo-800 rounded-3xl p-12 text-white text-center shadow-2xl relative overflow-hidden">
+        <div className="bg-linear-to-r from-blue-700 to-indigo-800 rounded-3xl p-12 text-white text-center shadow-2xl relative overflow-hidden">
           <div className="relative z-10">
             <h2 className="text-3xl font-bold mb-4">Need personalized Finovia advice?</h2>
             <p className="text-blue-100 mb-8 max-w-2xl mx-auto">

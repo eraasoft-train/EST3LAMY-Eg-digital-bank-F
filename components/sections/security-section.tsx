@@ -54,7 +54,7 @@ export function SecuritySection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 mb-16"
+          className="bg-linear-to-r from-blue-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 mb-16"
         >
           <h3 className="text-2xl font-bold text-center mb-8">Why Trust Finovia?</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">

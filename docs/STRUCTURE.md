@@ -62,13 +62,13 @@ import * as React from "react"
 import { cn } from "@/lib/utils" // Utility for merging Tailwind classes
 
 interface ComponentProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "outline"
+  variant?: "default" | "outline-solid"
 }
 
 export function ComponentName({ className, variant, ...props }: ComponentProps) {
   return (
     <div 
-      className={cn("base-styles", variant === "outline" && "outline-styles", className)} 
+      className={cn("base-styles", variant === "outline-solid" && "outline-styles", className)} 
       {...props}
     >
       {/* Content */}

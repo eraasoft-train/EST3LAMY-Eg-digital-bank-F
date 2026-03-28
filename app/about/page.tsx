@@ -24,7 +24,7 @@ export default function AboutPage() {
               At Finovia, we believe banking should be more than just transactions. It's about empowering your dreams, securing your legacy, and providing the tools to thrive in a digital-first economy.
             </p>
             <div className="flex items-center space-x-4 p-4 bg-blue-50 dark:bg-gray-800 rounded-2xl border border-blue-100 dark:border-gray-700">
-              <div className="p-3 bg-white dark:bg-gray-700 rounded-full shadow-sm">
+              <div className="p-3 bg-white dark:bg-gray-700 rounded-full shadow-xs">
                 <Globe className="h-6 w-6 text-blue-600" />
               </div>
               <div>
@@ -89,7 +89,7 @@ export default function AboutPage() {
                  transition={{ delay: index * 0.1 }}
                  className="relative pl-12"
                >
-                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-sm" />
+                 <div className="absolute -left-3 top-0 w-6 h-6 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-xs" />
                  <div className="text-blue-600 font-black text-xl mb-1">{m.year}</div>
                  <h3 className="text-2xl font-bold mb-2">{m.title}</h3>
                  <p className="text-gray-500 dark:text-gray-400 max-w-lg">{m.description}</p>
