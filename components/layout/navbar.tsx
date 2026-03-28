@@ -7,17 +7,11 @@ import { Menu, X, Shield, Moon, Sun, Globe } from "lucide-react"
 import { useTheme } from "next-themes"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
+import { navigation } from "@/data/navigation"
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { theme, setTheme } = useTheme()
-
-  const navigation = [
-    { name: "Accounts", href: "/accounts" },
-    { name: "Loans", href: "/loans" },
-    { name: "Business", href: "/business" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
-  ]
 
   return (
     <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">

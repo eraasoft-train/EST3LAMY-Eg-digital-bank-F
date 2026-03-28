@@ -4,7 +4,7 @@ import { Shield, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 export function Footer() {
   const footerLinks = {
     Banking: ["Checking Accounts", "Savings Accounts", "Business Banking", "Student Accounts"],
-    "Loans & Credit": ["Home Loans", "Auto Loans", "Personal Loans", "Credit Cards"],
+    Finovia: ["Home Loans", "Auto Loans", "Personal Loans", "Credit Cards"],
     Support: ["Help Center", "Contact Us", "Branch Locator", "Security Center"],
     Company: ["About Us", "Careers", "Investor Relations", "Press Room"],
   }

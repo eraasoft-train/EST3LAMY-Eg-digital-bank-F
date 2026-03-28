@@ -8,7 +8,9 @@ import { Slider } from "@/components/ui/slider"
 import { Home, Car, User, Building, Calculator } from "lucide-react"
 import { motion } from "framer-motion"
 
-export function LoanTools() {
+import { loanTypes } from "@/data/loan-tools"
+
+export function FinoviaTools() {
   const [loanAmount, setLoanAmount] = useState([250000])
   const [loanTerm, setLoanTerm] = useState([30])
   const [interestRate, setInterestRate] = useState([3.5])
@@ -25,41 +27,6 @@ export function LoanTools() {
     return monthlyPayment.toFixed(2)
   }
 
-  const loanTypes = [
-    {
-      id: "home",
-      name: "Home Loans",
-      icon: Home,
-      description: "Competitive rates for your dream home",
-      rate: "From 3.25% APR",
-      features: ["First-time buyer programs", "Jumbo loans available", "Fast pre-approval"],
-    },
-    {
-      id: "auto",
-      name: "Auto Loans",
-      icon: Car,
-      description: "Finance your next vehicle",
-      rate: "From 2.99% APR",
-      features: ["New and used cars", "Refinancing options", "Quick approval"],
-    },
-    {
-      id: "personal",
-      name: "Personal Loans",
-      icon: User,
-      description: "Flexible financing for life events",
-      rate: "From 5.99% APR",
-      features: ["No collateral required", "Fixed rates", "Same-day funding"],
-    },
-    {
-      id: "business",
-      name: "Business Loans",
-      icon: Building,
-      description: "Fuel your business growth",
-      rate: "Custom rates",
-      features: ["SBA loans", "Equipment financing", "Lines of credit"],
-    },
-  ]
-
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +37,7 @@ export function LoanTools() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Loans & Credit Solutions</h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Finovia Solutions</h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Whether you're buying a home, car, or growing your business, we have competitive rates and flexible terms.
           </p>
@@ -94,7 +61,7 @@ export function LoanTools() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div>
-                  <Label>Loan Amount: ${loanAmount[0].toLocaleString()}</Label>
+                  <Label>Loan Amount: ${loanAmount[0].toLocaleString('en-US')}</Label>
                   <Slider
                     value={loanAmount}
                     onValueChange={setLoanAmount}
