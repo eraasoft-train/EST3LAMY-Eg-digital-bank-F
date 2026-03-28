@@ -54,7 +54,7 @@ export default function FinoviaPage() {
                     </div>
                     <Slider
                       value={[loanAmount]}
-                      onValueChange={(val) => setLoanAmount(val[0])}
+                      onValueChange={(val: number[]) => setLoanAmount(val[0])}
                       max={1000000}
                       step={1000}
                       className="py-4 cursor-pointer"
