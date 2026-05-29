@@ -42,6 +42,8 @@ const nextConfig = {
     // date-fns v3 no longer exports './esm/locale/*'; redirect to the correct v3 paths
     config.resolve.alias = {
       ...config.resolve.alias,
+      'date-fns/esm/locale/en-US/index.js': 'date-fns/locale/en-US',
+      'date-fns/esm/locale/en-US/index': 'date-fns/locale/en-US',
       'date-fns/esm/locale/en-US': 'date-fns/locale/en-US',
       'date-fns/esm/locale': 'date-fns/locale',
       'date-fns/esm': 'date-fns',
