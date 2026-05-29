@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['react-day-picker'],
+  transpilePackages: ['react-day-picker', 'date-fns'],
   eslint: {
     ignoreDuringBuilds: true,
   },
