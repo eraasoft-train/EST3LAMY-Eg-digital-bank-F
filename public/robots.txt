@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /patient-portal/
+Disallow: /api/
+
+Sitemap: https://dr-medicare.vercel.app/sitemap.xml

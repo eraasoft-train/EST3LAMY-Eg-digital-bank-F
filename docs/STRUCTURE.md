@@ -40,8 +40,6 @@ app/
 ├── error.tsx               # Error boundary
 ├── global-error.tsx        # Global error handler
 ├── not-found.tsx           # 404 page
-├── robots.ts               # Robots.txt generator
-├── sitemap.ts              # Sitemap generator
 │
 ├── about/                  # About page
 │   └── page.tsx
@@ -172,6 +170,8 @@ Static assets:
 public/
 ├── favicon.svg             # Favicon
 ├── icon.svg                # App icon
+├── robots.txt              # Search engine crawler instructions
+├── sitemap.xml             # XML sitemap for search engines
 ├── *.png                   # Images
 └── *.jpg                   # Photos
 ```

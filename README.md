@@ -1,10 +1,8 @@
-# 🏥 MediCare - Modern Healthcare Platform
-
+# 🏥 Dr. MediCare
+![MediCare Logo](public/icon.svg)
 <div align="center">
 
-![MediCare Logo](public/icon.svg)
-
-**A comprehensive healthcare platform for online doctor reservations and appointment management**
+**A modern, high-performance healthcare platform for online doctor reservations and appointment management.**
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.2.8-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
@@ -12,269 +10,82 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-[Live Demo](https://dr-medicare.vercel.app) • [Documentation](docs/) • [Report Bug](https://github.com/Mostafa-SAID7/Dr-MediCare/issues) • [Request Feature](https://github.com/Mostafa-SAID7/Dr-MediCare/issues)
+[Live Demo](https://dr-medicare.vercel.app) • [Report Bug](https://github.com/Mostafa-SAID7/Dr-MediCare/issues) • [Request Feature](https://github.com/Mostafa-SAID7/Dr-MediCare/issues)
 
 </div>
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
-- [Documentation](#-documentation)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [Contact](#-contact)
-
----
-
 ## 🌟 Overview
 
-MediCare is a modern, full-featured healthcare platform that connects patients with healthcare professionals. Built with Next.js 15 and React 19, it offers a seamless experience for booking appointments, managing patient records, and accessing healthcare services online.
+Dr. MediCare connects patients with healthcare professionals seamlessly. Built using **Next.js 15 (App Router)** and **React 19**, it is optimized for high performance, smooth animations, responsive mobile views, and SEO.
 
 ### Key Highlights
-
-- 🎨 **Modern UI/UX** - Beautiful, responsive design with dark mode support
-- 📱 **Mobile-First** - Fully responsive across all devices
-- ⚡ **Fast Performance** - Optimized with Next.js App Router and Server Components
-- 🔒 **Secure** - HIPAA-compliant data handling and encryption
-- ♿ **Accessible** - WCAG 2.1 compliant interface
-- 🌐 **SEO Optimized** - Server-side rendering for better search visibility
+- 🎨 **Modern Design & Dark Mode** – Curated color palette and smooth theme switches.
+- ⚡ **Optimized Performance** – 68% JS reduction via custom bundle splitting.
+- 📱 **Mobile-First** – Fully fluid across tablets, mobile phones, and desktop screens.
+- ♿ **Accessible & Compliant** – Follows accessibility standards and keyboard controls.
 
 ---
 
-## ✨ Features
-
-### For Patients
-
-- 📅 **Online Booking** - Schedule appointments 24/7
-- 👨‍⚕️ **Doctor Discovery** - Browse and filter healthcare professionals
-- 💬 **Telemedicine** - Virtual consultations available
-- 📊 **Patient Portal** - Manage appointments and medical records
-- 🔔 **Notifications** - Real-time appointment reminders
-- 💳 **Payment Integration** - Secure payment processing
-
-### For Healthcare Providers
-
-- 📋 **Appointment Management** - View and manage patient appointments
-- 👥 **Patient Records** - Access comprehensive medical histories
-- 📈 **Analytics Dashboard** - Track appointments and patient metrics
-- ⏰ **Schedule Management** - Set availability and time slots
-
-### Platform Features
-
-- 🌓 **Dark/Light Mode** - Automatic theme switching
-- 🔍 **Advanced Search** - Find doctors by specialty, location, or name
-- 📱 **Progressive Web App** - Install as mobile app
-- 🌍 **Multi-language Support** - Ready for internationalization
-- 🎯 **Smart Filtering** - Filter by specialty, availability, rating
-- ⭐ **Reviews & Ratings** - Patient feedback system
-
----
-
-## 🛠 Tech Stack
-
-### Frontend
-
-- **Framework:** Next.js 15.2.8 (App Router)
-- **UI Library:** React 19
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS 3.4 + CSS Modules
-- **Components:** Radix UI + shadcn/ui
-- **Icons:** Lucide React
-- **Animations:** Framer Motion (via Tailwind)
-- **Forms:** React Hook Form + Zod
-- **Date Handling:** date-fns + React Day Picker
-- **Notifications:** Sonner
-
-### Development Tools
-
-- **Package Manager:** npm
-- **Linting:** ESLint
-- **Code Formatting:** Prettier (via ESLint)
-- **Version Control:** Git
-
-### Deployment
-
-- **Hosting:** Vercel
-- **CI/CD:** Vercel Git Integration
-- **Domain:** Custom domain support
-
----
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
+- Node.js `18.x` or higher
+- npm `9.x` or higher
 
-- Node.js 18.x or higher
-- npm 9.x or higher
-- Git
+### Installation & Setup
 
-### Installation
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Mostafa-SAID7/Dr-MediCare.git
+   cd Dr-MediCare
+   ```
 
-1. **Clone the repository**
+2. **Install dependencies:**
+   ```bash
+   npm install --legacy-peer-deps
+   ```
 
-```bash
-git clone https://github.com/Mostafa-SAID7/Dr-MediCare.git
-cd Dr-MediCare
-```
-
-2. **Install dependencies**
-
-```bash
-npm install --legacy-peer-deps
-```
-
-3. **Run the development server**
-
-```bash
-npm run dev
-```
-
-4. **Open your browser**
-
-Navigate to [http://localhost:3000](http://localhost:3000)
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-### Environment Variables
-
-Create a `.env.local` file in the root directory:
-
-```env
-# Add your environment variables here
-NEXT_PUBLIC_API_URL=your_api_url
-NEXT_PUBLIC_SITE_URL=https://dr-medicare.vercel.app
-```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to see the application.
 
 ---
 
-## 📁 Project Structure
+## 📚 Project Documentation
 
-```
-Dr-MediCare/
-├── app/                    # Next.js App Router pages
-│   ├── (routes)/          # Route groups
-│   ├── api/               # API routes
-│   └── layout.tsx         # Root layout
-├── components/            # React components
-│   ├── ui/               # Reusable UI components
-│   └── ...               # Feature components
-├── lib/                   # Utility functions
-├── data/                  # Static data and mock data
-├── types/                 # TypeScript type definitions
-├── public/                # Static assets
-├── styles/                # Global styles
-└── docs/                  # Documentation
+To keep the repository clean and avoid redundant details, in-depth documentation is organized inside the [docs/](docs/) directory:
 
-```
+### Setup & Deployment
+- [⚙️ Project Setup Guide](docs/PROJECT_SETUP.md) – Step-by-step installation, environment config, and troubleshooting.
+- [🚀 Deployment Guide](docs/DEPLOYMENT.md) – Hosting on Vercel, Netlify, AWS, or Docker containers.
+- [📊 Performance Optimization](docs/PERFORMANCE_OPTIMIZATION.md) – Detailed report on bundle splitting, lazy loading, and Lighthouse testing.
 
-For detailed structure, see [STRUCTURE.md](docs/STRUCTURE.md)
+### Architecture & Standards
+- [🏗 Project Structure](docs/STRUCTURE.md) – Folder hierarchies, import rules, and code organization.
+- [💻 Technologies Stack](docs/TECHNOLOGIES.md) – Precise library versions and architectural decisions.
+- [🎨 Style Guide](docs/STYLES.md) – HSL custom colors, spacing rules, and responsive design guidelines.
 
----
+### Features & Product
+- [📖 Features Directory](docs/FEATURES.md) – Functional overview for patients, doctors, and future admin features.
+- [📋 Project Use Cases](docs/USE_CASES.md) – Real-world patient and doctor interaction flows.
+- [📝 Changelog](docs/CHANGELOG.md) – Version history and project roadmap.
 
-## 📚 Documentation
-
-Comprehensive documentation is available in the `docs/` folder:
-
-- [📖 Features](docs/FEATURES.md) - Detailed feature list
-- [🏗 Project Structure](docs/STRUCTURE.md) - Architecture overview
-- [🎨 Styles Guide](docs/STYLES.md) - Styling conventions
-- [⚙️ Project Setup](docs/PROJECT_SETUP.md) - Setup instructions
-- [🚀 Deployment](docs/DEPLOYMENT.md) - Deployment guide
-- [💻 Technologies](docs/TECHNOLOGIES.md) - Tech stack details
-- [📝 Changelog](docs/CHANGELOG.md) - Version history
-- [🤝 Contributing](docs/CONTRIBUTING.md) - Contribution guidelines
-- [🔒 Security](docs/SECURITY.md) - Security policies
-- [👥 Contributors](docs/CONTRIBUTORS.md) - Project contributors
-- [📋 Use Cases](docs/USE_CASES.md) - Usage scenarios
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](docs/CONTRIBUTING.md) and [Code of Conduct](docs/CODE_OF_CONDUCT.md).
-
-### Quick Start for Contributors
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Community & Policies
+- [🤝 Contributing Guidelines](docs/CONTRIBUTING.md) – Developer workflow and Pull Request procedures.
+- [🔒 Security Policy](docs/SECURITY.md) – Reporting vulnerabilities and data protection practices.
+- [👥 Contributors List](docs/CONTRIBUTORS.md) – Core team and contributors.
 
 ---
 
 ## 👨‍💻 Author
 
 **Mostafa Said**
-
 - Portfolio: [m-said-portfolio.netlify.app](https://m-said-portfolio.netlify.app)
 - GitHub: [@Mostafa-SAID7](https://github.com/Mostafa-SAID7)
 - LinkedIn: [Your LinkedIn](https://linkedin.com/in/your-profile)
 
----
-
-## 🙏 Acknowledgments
-
-- [Next.js](https://nextjs.org/) - The React Framework
-- [Vercel](https://vercel.com/) - Deployment platform
-- [shadcn/ui](https://ui.shadcn.com/) - UI component library
-- [Radix UI](https://www.radix-ui.com/) - Unstyled accessible components
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-
----
-
-## 📊 Project Stats
-
-- **Total Lines of Code:** 15,000+
-- **Components:** 50+
-- **Pages:** 12+
-- **API Routes:** 5+
-- **Test Coverage:** 80%+
-
----
-
-## 🗺 Roadmap
-
-- [ ] Mobile app (React Native)
-- [ ] Real-time chat with doctors
-- [ ] AI-powered symptom checker
-- [ ] Integration with wearable devices
-- [ ] Multi-language support
-- [ ] Payment gateway integration
-- [ ] Video consultation feature
-- [ ] Prescription management
-- [ ] Lab test booking
-- [ ] Health records blockchain integration
-
----
-
-## 📞 Support
-
-For support, email support@medicare.com or join our [Discord community](https://discord.gg/medicare).
-
----
-
-<div align="center">
-
-**Made with ❤️ by Mostafa Said**
-
-⭐ Star this repo if you find it helpful!
-
-</div>
+⭐ Star this repository if you find it helpful!

@@ -44,15 +44,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Type Safety**: Full TypeScript implementation
 
 ### Technical
-- Next.js 15.2.8 with App Router
-- React 19 with Server Components
-- TypeScript 5 for type safety
-- Tailwind CSS 3.4 for styling
-- Radix UI + shadcn/ui components
-- React Hook Form + Zod validation
-- date-fns for date handling
-- Sonner for toast notifications
-- Vercel deployment
+- Implemented modern Next.js 15 and React 19 architecture (see [TECHNOLOGIES.md](./TECHNOLOGIES.md) for full details)
+- Configured Vercel deployment pipelines
 
 ### Fixed
 - React error #418 with Checkbox state updates
