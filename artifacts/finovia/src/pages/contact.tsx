@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { MessageSquare, Clock, Globe, Lock } from "lucide-react"
 
 import { contactMethods } from "@/data/contact"
+import { usePageMeta } from "@/hooks/use-page-meta"
 
 const supportStats = [
   { Icon: Clock, label: "24/7 Availability", desc: "Access your accounts and get support via automated systems anytime." },
@@ -16,6 +17,11 @@ const supportStats = [
 ]
 
 export default function ContactPage() {
+  usePageMeta({
+    title: "Contact Finovia — Secure 24/7 Banking Support",
+    description: "Get in touch with Finovia's team of financial specialists via phone, email, or secure live chat. Available 24/7 in 40+ languages with encrypted communication.",
+    canonical: "https://finovia.replit.app/contact",
+  })
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Page Hero */}

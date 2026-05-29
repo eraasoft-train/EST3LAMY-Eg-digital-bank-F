@@ -3,8 +3,14 @@ import { Badge } from "@/components/ui/badge"
 import { Globe, Landmark, Code, Heart } from "lucide-react"
 
 import { values, milestones } from "@/data/about"
+import { usePageMeta } from "@/hooks/use-page-meta"
 
 export default function AboutPage() {
+  usePageMeta({
+    title: "About Finovia — Building the Future of Trust",
+    description: "Learn how Finovia was founded to revolutionize digital banking through radical trust, transparency, and innovation — serving millions of customers worldwide since 2018.",
+    canonical: "https://finovia.replit.app/about",
+  })
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Page Hero */}

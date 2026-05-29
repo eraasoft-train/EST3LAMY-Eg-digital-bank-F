@@ -5,8 +5,14 @@ import { Badge } from "@/components/ui/badge"
 import { CheckCircle2, ArrowRight, ShieldCheck } from "lucide-react"
 
 import { accountTypes } from "@/data/accounts"
+import { usePageMeta } from "@/hooks/use-page-meta"
 
 export default function AccountsPage() {
+  usePageMeta({
+    title: "Personal Bank Accounts — Checking & Savings",
+    description: "Open a free Essential Checking account or earn 4.50% APY with Finovia High-Yield Savings. FDIC-insured, no minimum balance, and no monthly fees.",
+    canonical: "https://finovia.replit.app/accounts",
+  })
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Page Hero */}

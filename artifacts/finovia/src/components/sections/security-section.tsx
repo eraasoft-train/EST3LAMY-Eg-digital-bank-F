@@ -2,18 +2,37 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "framer-motion"
 import { securityFeatures, testimonials } from "@/data/security"
-import { Quote } from "lucide-react"
+import { Quote, Star } from "lucide-react"
+
+const avatarColors: Record<string, { bg: string; text: string }> = {
+  "Sarah Johnson":   { bg: "bg-blue-100 dark:bg-blue-900/40",   text: "text-blue-700 dark:text-blue-300" },
+  "Michael Chen":    { bg: "bg-purple-100 dark:bg-purple-900/40", text: "text-purple-700 dark:text-purple-300" },
+  "Emily Rodriguez": { bg: "bg-teal-100 dark:bg-teal-900/40",   text: "text-teal-700 dark:text-teal-300" },
+}
+
+function Avatar({ name }: { name: string }) {
+  const initials = name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase()
+  const color = avatarColors[name] ?? { bg: "bg-gray-100 dark:bg-gray-800", text: "text-gray-700 dark:text-gray-300" }
+  return (
+    <div
+      className={`w-10 h-10 rounded-full ${color.bg} ${color.text} flex items-center justify-center font-bold text-sm shrink-0`}
+      aria-label={name}
+    >
+      {initials}
+    </div>
+  )
+}
 
 export function SecuritySection() {
   const trustStats = [
-    { value: "FDIC", label: "Insured up to $250,000", color: "from-blue-500 to-blue-600" },
-    { value: "99.9%", label: "Uptime guarantee", color: "from-green-500 to-emerald-600" },
-    { value: "24/7", label: "Security monitoring", color: "from-purple-500 to-purple-600" },
-    { value: "SOC 2", label: "Type II compliant", color: "from-teal-500 to-teal-600" },
+    { value: "FDIC",  label: "Insured up to $250,000",  color: "from-blue-500 to-blue-600" },
+    { value: "99.9%", label: "Uptime guarantee",         color: "from-green-500 to-emerald-600" },
+    { value: "24/7",  label: "Security monitoring",      color: "from-purple-500 to-purple-600" },
+    { value: "SOC 2", label: "Type II compliant",        color: "from-teal-500 to-teal-600" },
   ]
 
   return (
-    <section className="py-24 bg-white dark:bg-gray-900">
+    <section className="py-24 bg-white dark:bg-gray-900" aria-label="Security Features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Section Header */}
@@ -93,14 +112,23 @@ export function SecuritySection() {
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="border border-gray-100 dark:border-gray-800 hover:shadow-lg transition-all duration-300">
                 <CardContent className="p-7">
-                  <Quote className="h-6 w-6 text-blue-200 dark:text-blue-800 mb-4" />
+                  {/* Stars */}
+                  <div className="flex gap-1 mb-4">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <Quote className="h-5 w-5 text-blue-200 dark:text-blue-800 mb-3" />
                   <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-sm">"{testimonial.content}"</p>
                   <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
-                    <div>
-                      <div className="font-semibold text-gray-900 dark:text-white text-sm">{testimonial.name}</div>
-                      <div className="text-xs text-gray-400 mt-0.5">{testimonial.role}</div>
+                    <div className="flex items-center gap-3">
+                      <Avatar name={testimonial.name} />
+                      <div>
+                        <div className="font-semibold text-gray-900 dark:text-white text-sm">{testimonial.name}</div>
+                        <div className="text-xs text-gray-400 mt-0.5">{testimonial.role}</div>
+                      </div>
                     </div>
-                    <Badge variant="secondary" className="text-xs rounded-full">{testimonial.years}</Badge>
+                    <Badge variant="secondary" className="text-xs rounded-full shrink-0">{testimonial.years}</Badge>
                   </div>
                 </CardContent>
               </Card>

@@ -7,8 +7,14 @@ import { Slider } from "@/components/ui/slider"
 import { Landmark, HelpCircle, ArrowRight } from "lucide-react"
 
 import { loanProducts } from "@/data/finovia"
+import { usePageMeta } from "@/hooks/use-page-meta"
 
 export default function FinoviaPage() {
+  usePageMeta({
+    title: "Loans & Financing — Mortgage, Auto & Personal Loans",
+    description: "Get competitive loan rates from Finovia — mortgage from 4.25% APR, auto loans from 3.50% APR, personal loans from 6.99% APR. Estimate your payment with our free loan calculator.",
+    canonical: "https://finovia.replit.app/finovia",
+  })
   const [loanAmount, setLoanAmount] = useState(250000)
   const monthlyPayment = Math.round((loanAmount * (0.05 / 12)) / (1 - Math.pow(1 + 0.05 / 12, -360)))
   const totalPaid = (monthlyPayment * 360).toLocaleString("en-US")

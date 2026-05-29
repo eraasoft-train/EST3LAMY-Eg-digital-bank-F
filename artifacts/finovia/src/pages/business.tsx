@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge"
 import { Landmark, ChevronRight, Check, TrendingUp, Users, Zap } from "lucide-react"
 
 import { businessSolutions } from "@/data/business"
+import { usePageMeta } from "@/hooks/use-page-meta"
 
 const stats = [
   { value: "$142B+", label: "Business assets managed", icon: TrendingUp },
@@ -13,6 +14,11 @@ const stats = [
 ]
 
 export default function BusinessPage() {
+  usePageMeta({
+    title: "Business Banking — Commercial Checking & Treasury",
+    description: "Enterprise-grade business banking with commercial checking, treasury management, SBA loans, and payroll tools. Manage $142B+ in business assets. Open in under 5 minutes.",
+    canonical: "https://finovia.replit.app/business",
+  })
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Page Hero */}
