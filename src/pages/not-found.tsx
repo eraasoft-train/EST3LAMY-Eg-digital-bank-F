@@ -1,7 +1,7 @@
 import { Link } from "wouter"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Home, ArrowLeft, Search, ShieldAlert } from "lucide-react"
+import { Home, Search, ShieldAlert } from "lucide-react"
 
 export default function NotFound() {
   return (

@@ -98,6 +98,7 @@ export default function BusinessPage() {
           <div className="grid grid-cols-3 gap-6 text-center">
             {stats.map(({ value, label, icon: Icon }) => (
               <div key={label} className="flex flex-col items-center">
+                <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2 opacity-80" />
                 <div className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-1">{value}</div>
                 <div className="text-xs md:text-sm text-gray-400 font-medium">{label}</div>
               </div>
