@@ -1,5 +1,5 @@
 # 🏥 Dr. MediCare
-![MediCare Logo](public/icon.svg)
+
 <div align="center">
 
 **A modern, high-performance healthcare platform for online doctor reservations and appointment management.**
