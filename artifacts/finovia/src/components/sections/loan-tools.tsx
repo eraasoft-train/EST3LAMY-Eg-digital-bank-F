@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,11 +7,12 @@ import { Calculator, Check } from "lucide-react"
 import { motion } from "framer-motion"
 
 import { loanTypes } from "@/data/loan-tools"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 export function FinoviaTools() {
-  const [loanAmount, setLoanAmount] = useState([250000])
-  const [loanTerm, setLoanTerm] = useState([30])
-  const [interestRate, setInterestRate] = useState([3.5])
+  const [loanAmount, setLoanAmount] = useLocalStorage<number[]>("finovia-calc-amount", [250000])
+  const [loanTerm, setLoanTerm] = useLocalStorage<number[]>("finovia-calc-term", [30])
+  const [interestRate, setInterestRate] = useLocalStorage<number[]>("finovia-calc-rate", [3.5])
 
   const calculateMonthlyPayment = () => {
     const principal = loanAmount[0]
@@ -31,7 +31,6 @@ export function FinoviaTools() {
     <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +67,7 @@ export function FinoviaTools() {
                   <CardTitle className="text-2xl text-white">Loan Calculator</CardTitle>
                 </div>
                 <CardDescription className="text-blue-100">
-                  Estimate your monthly payment in seconds
+                  Estimate your monthly payment in seconds — your values are saved automatically.
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-8 space-y-7">

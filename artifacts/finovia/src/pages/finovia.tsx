@@ -1,13 +1,13 @@
-import { useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Slider } from "@/components/ui/slider"
 import { Landmark, HelpCircle, ArrowRight } from "lucide-react"
 
 import { loanProducts } from "@/data/finovia"
 import { usePageMeta } from "@/hooks/use-page-meta"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 export default function FinoviaPage() {
   usePageMeta({
@@ -15,7 +15,8 @@ export default function FinoviaPage() {
     description: "Get competitive loan rates from Finovia — mortgage from 4.25% APR, auto loans from 3.50% APR, personal loans from 6.99% APR. Estimate your payment with our free loan calculator.",
     canonical: "https://finovia.replit.app/finovia",
   })
-  const [loanAmount, setLoanAmount] = useState(250000)
+
+  const [loanAmount, setLoanAmount] = useLocalStorage<number>("finovia-page-loan-amount", 250000)
   const monthlyPayment = Math.round((loanAmount * (0.05 / 12)) / (1 - Math.pow(1 + 0.05 / 12, -360)))
   const totalPaid = (monthlyPayment * 360).toLocaleString("en-US")
   const totalInterest = (monthlyPayment * 360 - loanAmount).toLocaleString("en-US")
@@ -54,7 +55,7 @@ export default function FinoviaPage() {
           <Card className="max-w-4xl mx-auto border border-gray-100 dark:border-gray-800 shadow-2xl overflow-hidden">
             <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-8 text-white text-center">
               <h2 className="text-2xl font-bold mb-1">Loan Payment Estimator</h2>
-              <p className="text-blue-100 text-sm">See your monthly payment with our competitive rates.</p>
+              <p className="text-blue-100 text-sm">See your monthly payment — your loan amount is saved automatically.</p>
             </div>
             <CardContent className="p-8 md:p-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">

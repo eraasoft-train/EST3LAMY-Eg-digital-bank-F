@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -9,9 +8,34 @@ import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { User, CreditCard, Upload, Calendar, CheckCircle, ChevronRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useLocalStorage } from "@/hooks/use-local-storage"
+
+const SERVICES = ["Debit Card", "Online Banking", "Mobile Banking", "Overdraft Protection"] as const
+
+interface FormData {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  address: string
+  accountType: string
+  services: string[]
+  meetingType: string
+  date: string
+  time: string
+  notes: string
+}
+
+const EMPTY_FORM: FormData = {
+  firstName: "", lastName: "", email: "", phone: "", address: "",
+  accountType: "", services: [],
+  meetingType: "", date: "", time: "", notes: "",
+}
 
 export function OnboardingSection() {
-  const [currentStep, setCurrentStep] = useState(1)
+  const [currentStep, setCurrentStep] = useLocalStorage<number>("finovia-onboarding-step", 1)
+  const [formData, setFormData] = useLocalStorage<FormData>("finovia-onboarding-data", EMPTY_FORM)
+
   const totalSteps = 4
 
   const steps = [
@@ -21,14 +45,31 @@ export function OnboardingSection() {
     { number: 4, title: "Schedule", icon: Calendar },
   ]
 
+  const updateField = (field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
+  const toggleService = (service: string) => {
+    setFormData(prev => ({
+      ...prev,
+      services: prev.services.includes(service)
+        ? prev.services.filter(s => s !== service)
+        : [...prev.services, service],
+    }))
+  }
+
   const nextStep = () => { if (currentStep < totalSteps) setCurrentStep(currentStep + 1) }
   const prevStep = () => { if (currentStep > 1) setCurrentStep(currentStep - 1) }
+
+  const handleComplete = () => {
+    setCurrentStep(1)
+    setFormData(EMPTY_FORM)
+  }
 
   return (
     <section className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +89,7 @@ export function OnboardingSection() {
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
-          {/* Step Indicators — responsive row for all screens */}
+          {/* Step Indicators */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-5 overflow-x-auto gap-1 pb-1">
               {steps.map((step, i) => (
@@ -120,24 +161,56 @@ export function OnboardingSection() {
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="firstName" className="text-sm font-medium">First Name</Label>
-                          <Input id="firstName" placeholder="John" className="h-11 rounded-xl" />
+                          <Input
+                            id="firstName"
+                            placeholder="John"
+                            className="h-11 rounded-xl"
+                            value={formData.firstName}
+                            onChange={e => updateField("firstName", e.target.value)}
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="lastName" className="text-sm font-medium">Last Name</Label>
-                          <Input id="lastName" placeholder="Doe" className="h-11 rounded-xl" />
+                          <Input
+                            id="lastName"
+                            placeholder="Doe"
+                            className="h-11 rounded-xl"
+                            value={formData.lastName}
+                            onChange={e => updateField("lastName", e.target.value)}
+                          />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
-                        <Input id="email" type="email" placeholder="john@example.com" className="h-11 rounded-xl" />
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="john@example.com"
+                          className="h-11 rounded-xl"
+                          value={formData.email}
+                          onChange={e => updateField("email", e.target.value)}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-sm font-medium">Phone Number</Label>
-                        <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" className="h-11 rounded-xl" />
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="+1 (555) 123-4567"
+                          className="h-11 rounded-xl"
+                          value={formData.phone}
+                          onChange={e => updateField("phone", e.target.value)}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="address" className="text-sm font-medium">Home Address</Label>
-                        <Input id="address" placeholder="123 Main St, City, State 12345" className="h-11 rounded-xl" />
+                        <Input
+                          id="address"
+                          placeholder="123 Main St, City, State 12345"
+                          className="h-11 rounded-xl"
+                          value={formData.address}
+                          onChange={e => updateField("address", e.target.value)}
+                        />
                       </div>
                     </div>
                   )}
@@ -147,7 +220,7 @@ export function OnboardingSection() {
                     <div className="space-y-6">
                       <div className="space-y-2">
                         <Label className="text-sm font-medium">Select Account Type</Label>
-                        <Select>
+                        <Select value={formData.accountType} onValueChange={v => updateField("accountType", v)}>
                           <SelectTrigger className="h-11 rounded-xl">
                             <SelectValue placeholder="Choose an account type" />
                           </SelectTrigger>
@@ -161,10 +234,24 @@ export function OnboardingSection() {
                       </div>
                       <div className="space-y-3">
                         <Label className="text-sm font-medium">Additional Services</Label>
-                        {["Debit Card", "Online Banking", "Mobile Banking", "Overdraft Protection"].map((item) => (
-                          <div key={item} className="flex items-center gap-3 p-3.5 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 hover:shadow-sm transition-all duration-200 cursor-pointer group">
-                            <Checkbox id={item} className="rounded transition-transform duration-150 group-hover:scale-110" />
-                            <Label htmlFor={item} className="text-sm font-normal text-gray-600 dark:text-gray-300 cursor-pointer group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">{item}</Label>
+                        {SERVICES.map((item) => (
+                          <div
+                            key={item}
+                            onClick={() => toggleService(item)}
+                            className="flex items-center gap-3 p-3.5 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 hover:shadow-sm transition-all duration-200 cursor-pointer group"
+                          >
+                            <Checkbox
+                              id={item}
+                              checked={formData.services.includes(item)}
+                              onCheckedChange={() => toggleService(item)}
+                              className="rounded transition-transform duration-150 group-hover:scale-110"
+                            />
+                            <Label
+                              htmlFor={item}
+                              className="text-sm font-normal text-gray-600 dark:text-gray-300 cursor-pointer group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200"
+                            >
+                              {item}
+                            </Label>
                           </div>
                         ))}
                       </div>
@@ -200,7 +287,7 @@ export function OnboardingSection() {
                     <div className="space-y-5">
                       <div className="space-y-2">
                         <Label className="text-sm font-medium">Meeting Type</Label>
-                        <Select>
+                        <Select value={formData.meetingType} onValueChange={v => updateField("meetingType", v)}>
                           <SelectTrigger className="h-11 rounded-xl">
                             <SelectValue placeholder="Choose meeting type" />
                           </SelectTrigger>
@@ -214,11 +301,17 @@ export function OnboardingSection() {
                       <div className="grid sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="date" className="text-sm font-medium">Preferred Date</Label>
-                          <Input id="date" type="date" className="h-11 rounded-xl" />
+                          <Input
+                            id="date"
+                            type="date"
+                            className="h-11 rounded-xl"
+                            value={formData.date}
+                            onChange={e => updateField("date", e.target.value)}
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label className="text-sm font-medium">Preferred Time</Label>
-                          <Select>
+                          <Select value={formData.time} onValueChange={v => updateField("time", v)}>
                             <SelectTrigger className="h-11 rounded-xl">
                               <SelectValue placeholder="Select time" />
                             </SelectTrigger>
@@ -232,7 +325,13 @@ export function OnboardingSection() {
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="notes" className="text-sm font-medium">Additional Notes (Optional)</Label>
-                        <Input id="notes" placeholder="Any specific questions or requirements?" className="h-11 rounded-xl" />
+                        <Input
+                          id="notes"
+                          placeholder="Any specific questions or requirements?"
+                          className="h-11 rounded-xl"
+                          value={formData.notes}
+                          onChange={e => updateField("notes", e.target.value)}
+                        />
                       </div>
                     </div>
                   )}
@@ -255,7 +354,10 @@ export function OnboardingSection() {
                     <ChevronRight className="h-4 w-4" />
                   </Button>
                 ) : (
-                  <Button className="h-11 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 shadow-lg shadow-blue-500/20">
+                  <Button
+                    onClick={handleComplete}
+                    className="h-11 px-6 rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-700 hover:to-teal-700 shadow-lg shadow-blue-500/20"
+                  >
                     Complete Application
                   </Button>
                 )}

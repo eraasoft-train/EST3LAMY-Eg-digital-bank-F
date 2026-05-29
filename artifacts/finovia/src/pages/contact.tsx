@@ -5,10 +5,12 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
-import { MessageSquare, Clock, Globe, Lock } from "lucide-react"
+import { MessageSquare, Clock, Globe, Lock, CheckCircle } from "lucide-react"
+import { useState } from "react"
 
 import { contactMethods } from "@/data/contact"
 import { usePageMeta } from "@/hooks/use-page-meta"
+import { useLocalStorage } from "@/hooks/use-local-storage"
 
 const supportStats = [
   { Icon: Clock, label: "24/7 Availability", desc: "Access your accounts and get support via automated systems anytime." },
@@ -16,12 +18,37 @@ const supportStats = [
   { Icon: Lock, label: "Encrypted End-to-End", desc: "All communications are hardened with the latest security standards." },
 ]
 
+interface ContactDraft {
+  firstName: string
+  lastName: string
+  email: string
+  subject: string
+  message: string
+}
+
+const EMPTY_DRAFT: ContactDraft = { firstName: "", lastName: "", email: "", subject: "", message: "" }
+
 export default function ContactPage() {
   usePageMeta({
     title: "Contact Finovia — Secure 24/7 Banking Support",
     description: "Get in touch with Finovia's team of financial specialists via phone, email, or secure live chat. Available 24/7 in 40+ languages with encrypted communication.",
     canonical: "https://finovia.replit.app/contact",
   })
+
+  const [draft, setDraft] = useLocalStorage<ContactDraft>("finovia-contact-draft", EMPTY_DRAFT)
+  const [submitted, setSubmitted] = useState(false)
+
+  const updateDraft = (field: keyof ContactDraft, value: string) => {
+    setDraft(prev => ({ ...prev, [field]: value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+    setDraft(EMPTY_DRAFT)
+    setTimeout(() => setSubmitted(false), 4000)
+  }
+
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">
       {/* Page Hero */}
@@ -61,36 +88,82 @@ export default function ContactPage() {
                 <p className="text-blue-100 text-sm">All information is encrypted using 256-bit bank-grade security protocols.</p>
               </div>
               <CardContent className="p-8">
-                <form className="space-y-5">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div className="space-y-2">
-                      <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">First Name</Label>
-                      <Input placeholder="John" className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700" />
+                {submitted ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="flex flex-col items-center justify-center py-16 text-center"
+                  >
+                    <div className="w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
+                      <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Message Sent!</h3>
+                    <p className="text-gray-500 dark:text-gray-400 text-sm max-w-xs">
+                      A Finovia specialist will respond to your inquiry within 1 business hour.
+                    </p>
+                  </motion.div>
+                ) : (
+                  <form className="space-y-5" onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div className="space-y-2">
+                        <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">First Name</Label>
+                        <Input
+                          placeholder="John"
+                          className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700"
+                          value={draft.firstName}
+                          onChange={e => updateDraft("firstName", e.target.value)}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Last Name</Label>
+                        <Input
+                          placeholder="Doe"
+                          className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700"
+                          value={draft.lastName}
+                          onChange={e => updateDraft("lastName", e.target.value)}
+                        />
+                      </div>
                     </div>
                     <div className="space-y-2">
-                      <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Last Name</Label>
-                      <Input placeholder="Doe" className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700" />
+                      <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email Address</Label>
+                      <Input
+                        type="email"
+                        placeholder="john.doe@example.com"
+                        className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700"
+                        value={draft.email}
+                        onChange={e => updateDraft("email", e.target.value)}
+                      />
                     </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Email Address</Label>
-                    <Input type="email" placeholder="john.doe@example.com" className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Subject</Label>
-                    <Input placeholder="Inquiry about Loan Rates" className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Message</Label>
-                    <Textarea
-                      placeholder="How can we assist your financial goals today?"
-                      className="min-h-[140px] rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700 resize-none"
-                    />
-                  </div>
-                  <Button size="lg" className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-base font-semibold shadow-lg shadow-blue-500/20">
-                    Submit Secure Inquiry
-                  </Button>
-                </form>
+                    <div className="space-y-2">
+                      <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Subject</Label>
+                      <Input
+                        placeholder="Inquiry about Loan Rates"
+                        className="h-11 rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700"
+                        value={draft.subject}
+                        onChange={e => updateDraft("subject", e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Message</Label>
+                      <Textarea
+                        placeholder="How can we assist your financial goals today?"
+                        className="min-h-[140px] rounded-xl bg-gray-50 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700 resize-none"
+                        value={draft.message}
+                        onChange={e => updateDraft("message", e.target.value)}
+                      />
+                      {draft.message.length > 0 && (
+                        <p className="text-xs text-gray-400 text-right">{draft.message.length} characters — draft auto-saved</p>
+                      )}
+                    </div>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full h-12 rounded-xl bg-blue-600 hover:bg-blue-700 text-base font-semibold shadow-lg shadow-blue-500/20"
+                    >
+                      Submit Secure Inquiry
+                    </Button>
+                  </form>
+                )}
               </CardContent>
             </Card>
           </motion.div>

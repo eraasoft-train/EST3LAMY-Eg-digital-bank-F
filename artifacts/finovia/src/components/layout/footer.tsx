@@ -1,9 +1,21 @@
 import { Link } from "wouter"
-import { Shield, Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react"
+import { Shield, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useLocalStorage } from "@/hooks/use-local-storage"
+import { useState } from "react"
 
 export function Footer() {
+  const [newsletterEmail, setNewsletterEmail] = useLocalStorage<string>("finovia-newsletter-draft", "")
+  const [subscribed, setSubscribed] = useState(false)
+
+  const handleSubscribe = () => {
+    if (!newsletterEmail.trim()) return
+    setSubscribed(true)
+    setNewsletterEmail("")
+    setTimeout(() => setSubscribed(false), 3000)
+  }
+
   const footerLinks = {
     Banking: ["Checking Accounts", "Savings Accounts", "Business Banking", "Student Accounts"],
     Loans: ["Home Loans", "Auto Loans", "Personal Loans", "Credit Cards"],
@@ -21,16 +33,27 @@ export function Footer() {
               <h3 className="text-lg font-semibold text-white mb-1">Stay up to date</h3>
               <p className="text-sm text-gray-400">Get the latest banking insights and product updates.</p>
             </div>
-            <div className="flex gap-2 w-full md:w-auto md:max-w-sm">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="h-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 rounded-xl focus:border-blue-500 focus:ring-blue-500"
-              />
-              <Button size="sm" className="h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 shrink-0">
-                Subscribe
-              </Button>
-            </div>
+            {subscribed ? (
+              <p className="text-sm font-medium text-teal-400">Thanks for subscribing!</p>
+            ) : (
+              <div className="flex gap-2 w-full md:w-auto md:max-w-sm">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="h-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 rounded-xl focus:border-blue-500 focus:ring-blue-500"
+                  value={newsletterEmail}
+                  onChange={e => setNewsletterEmail(e.target.value)}
+                  onKeyDown={e => e.key === "Enter" && handleSubscribe()}
+                />
+                <Button
+                  size="sm"
+                  className="h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 shrink-0"
+                  onClick={handleSubscribe}
+                >
+                  Subscribe
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>
