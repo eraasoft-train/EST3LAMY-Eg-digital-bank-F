@@ -38,6 +38,13 @@ const nextConfig = {
   },
   // Webpack optimizations
   webpack: (config, { isServer, dev }) => {
+    // Fix react-day-picker v9 importing date-fns v2 ESM locale paths
+    // date-fns v3 no longer exports './esm/locale/*'; redirect to the correct v3 paths
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'date-fns/esm/locale/en-US': 'date-fns/locale/en-US',
+    }
+
     if (!isServer && !dev) {
       // Aggressive bundle splitting for better caching and parallel loading
       config.optimization = {
