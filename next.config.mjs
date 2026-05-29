@@ -43,6 +43,8 @@ const nextConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       'date-fns/esm/locale/en-US': 'date-fns/locale/en-US',
+      'date-fns/esm/locale': 'date-fns/locale',
+      'date-fns/esm': 'date-fns',
     }
 
     if (!isServer && !dev) {
