@@ -90,7 +90,7 @@ export function AccountOfferings() {
                 <TabsTrigger
                   key={account.id}
                   value={account.id}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 data-[state=active]:shadow-sm"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 data-[state=active]:bg-white dark:data-[state=active]:bg-gray-700 data-[state=active]:shadow-sm hover:text-gray-900 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
                 >
                   <account.icon className="h-4 w-4 shrink-0" />
                   <span className="hidden sm:inline">{account.name}</span>

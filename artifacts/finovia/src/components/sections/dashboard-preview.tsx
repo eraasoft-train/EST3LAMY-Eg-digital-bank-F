@@ -58,7 +58,7 @@ export function DashboardPreview() {
             {/* Account Cards */}
             <div className="grid sm:grid-cols-3 gap-4 mb-8">
               {accounts.map((account, index) => (
-                <Card key={index} className="border border-gray-100 dark:border-gray-800 hover:shadow-md transition-shadow">
+                <Card key={index} className="border border-gray-100 dark:border-gray-800 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 cursor-default">
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 pt-5 px-5">
                     <CardTitle className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                       {account.name}
@@ -90,11 +90,14 @@ export function DashboardPreview() {
                   <CardTitle className="text-base font-semibold">Recent Transactions</CardTitle>
                 </CardHeader>
                 <CardContent className="px-6 pb-5">
-                  <div className="space-y-4">
+                  <div className="space-y-1">
                     {transactions.map((transaction, index) => (
-                      <div key={index} className="flex items-center justify-between">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800/60 transition-all duration-200 -mx-1 cursor-default group"
+                      >
                         <div className="flex items-center gap-3">
-                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-transform duration-200 group-hover:scale-110 ${
                             transaction.type === "credit"
                               ? "bg-green-50 dark:bg-green-900/20 text-green-600"
                               : "bg-red-50 dark:bg-red-900/20 text-red-500"
@@ -106,7 +109,7 @@ export function DashboardPreview() {
                             <div className="text-xs text-gray-400">{transaction.date}</div>
                           </div>
                         </div>
-                        <div className={`text-sm font-bold ${transaction.type === "credit" ? "text-green-600" : "text-red-500"}`}>
+                        <div className={`text-sm font-bold transition-colors duration-200 ${transaction.type === "credit" ? "text-green-600" : "text-red-500"}`}>
                           {transaction.type === "credit" ? "+" : "−"}${Math.abs(transaction.amount).toFixed(2)}
                         </div>
                       </div>

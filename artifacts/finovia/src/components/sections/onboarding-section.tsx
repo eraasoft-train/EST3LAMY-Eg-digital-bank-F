@@ -162,9 +162,9 @@ export function OnboardingSection() {
                       <div className="space-y-3">
                         <Label className="text-sm font-medium">Additional Services</Label>
                         {["Debit Card", "Online Banking", "Mobile Banking", "Overdraft Protection"].map((item) => (
-                          <div key={item} className="flex items-center gap-3 p-3.5 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-200 dark:hover:border-blue-800 transition-colors">
-                            <Checkbox id={item} className="rounded" />
-                            <Label htmlFor={item} className="text-sm font-normal text-gray-600 dark:text-gray-300 cursor-pointer">{item}</Label>
+                          <div key={item} className="flex items-center gap-3 p-3.5 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50/40 dark:hover:bg-blue-900/10 hover:shadow-sm transition-all duration-200 cursor-pointer group">
+                            <Checkbox id={item} className="rounded transition-transform duration-150 group-hover:scale-110" />
+                            <Label htmlFor={item} className="text-sm font-normal text-gray-600 dark:text-gray-300 cursor-pointer group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">{item}</Label>
                           </div>
                         ))}
                       </div>
@@ -180,9 +180,9 @@ export function OnboardingSection() {
                       ].map(({ label, hint }) => (
                         <div key={label} className="space-y-2">
                           <Label className="text-sm font-medium">{label}</Label>
-                          <div className="border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-2xl p-8 text-center hover:border-blue-300 dark:hover:border-blue-700 transition-colors cursor-pointer group">
-                            <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors">
-                              <Upload className="h-5 w-5 text-gray-400 group-hover:text-blue-500" />
+                          <div className="border-2 border-dashed border-gray-200 dark:border-gray-700 rounded-2xl p-8 text-center hover:border-blue-400 dark:hover:border-blue-600 hover:bg-blue-50/30 dark:hover:bg-blue-900/10 hover:shadow-inner transition-all duration-250 cursor-pointer group">
+                            <div className="w-12 h-12 rounded-xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 group-hover:scale-110 transition-all duration-250">
+                              <Upload className="h-5 w-5 text-gray-400 group-hover:text-blue-500 transition-colors duration-200" />
                             </div>
                             <p className="text-sm font-medium text-gray-600 dark:text-gray-300 mb-1">Drop file here or click to upload</p>
                             <p className="text-xs text-gray-400">{hint}</p>

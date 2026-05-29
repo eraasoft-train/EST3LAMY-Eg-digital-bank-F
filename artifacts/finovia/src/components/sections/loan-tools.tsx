@@ -165,7 +165,7 @@ export function FinoviaTools() {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 viewport={{ once: true }}
               >
-                <Card className="border border-gray-100 dark:border-gray-800 hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-lg transition-all duration-300 group">
+                <Card className="border border-gray-100 dark:border-gray-800 hover:border-blue-200 dark:hover:border-blue-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out group">
                   <CardContent className="p-6">
                     <div className="flex items-start gap-5">
                       <div className="w-12 h-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center shrink-0 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
