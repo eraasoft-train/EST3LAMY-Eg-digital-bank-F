@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#4308d1" rx="20"/>
-  <text x="50" y="70" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle">DM</text>
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" rx="40" fill="#2563EB"/>
+  <path d="M90 36L126 52V86C126 108 111 127 90 134C69 127 54 108 54 86V52L90 36Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="3"/>
+  <path d="M79 91L88 100L104 81" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
