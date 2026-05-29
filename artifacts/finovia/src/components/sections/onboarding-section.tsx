@@ -1,3 +1,4 @@
+import { useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -45,26 +46,26 @@ export function OnboardingSection() {
     { number: 4, title: "Schedule", icon: Calendar },
   ]
 
-  const updateField = (field: keyof FormData, value: string) => {
+  const updateField = useCallback((field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }))
-  }
+  }, [setFormData])
 
-  const toggleService = (service: string) => {
+  const toggleService = useCallback((service: string) => {
     setFormData(prev => ({
       ...prev,
       services: prev.services.includes(service)
         ? prev.services.filter(s => s !== service)
         : [...prev.services, service],
     }))
-  }
+  }, [setFormData])
 
-  const nextStep = () => { if (currentStep < totalSteps) setCurrentStep(currentStep + 1) }
-  const prevStep = () => { if (currentStep > 1) setCurrentStep(currentStep - 1) }
+  const nextStep = useCallback(() => { if (currentStep < totalSteps) setCurrentStep(currentStep + 1) }, [currentStep, totalSteps, setCurrentStep])
+  const prevStep = useCallback(() => { if (currentStep > 1) setCurrentStep(currentStep - 1) }, [currentStep, setCurrentStep])
 
-  const handleComplete = () => {
+  const handleComplete = useCallback(() => {
     setCurrentStep(1)
     setFormData(EMPTY_FORM)
-  }
+  }, [setCurrentStep, setFormData])
 
   return (
     <section className="py-24 bg-white dark:bg-gray-900">

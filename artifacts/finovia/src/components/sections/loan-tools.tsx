@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -14,18 +15,24 @@ export function FinoviaTools() {
   const [loanTerm, setLoanTerm] = useLocalStorage<number[]>("finovia-calc-term", [30])
   const [interestRate, setInterestRate] = useLocalStorage<number[]>("finovia-calc-rate", [3.5])
 
-  const calculateMonthlyPayment = () => {
+  const monthlyPayment = useMemo(() => {
     const principal = loanAmount[0]
     const monthlyRate = interestRate[0] / 100 / 12
     const numPayments = loanTerm[0] * 12
-    const monthlyPayment =
+    const payment =
       (principal * (monthlyRate * Math.pow(1 + monthlyRate, numPayments))) /
       (Math.pow(1 + monthlyRate, numPayments) - 1)
-    return monthlyPayment.toFixed(2)
-  }
+    return payment.toFixed(2)
+  }, [loanAmount, loanTerm, interestRate])
 
-  const totalPaid = (parseFloat(calculateMonthlyPayment()) * loanTerm[0] * 12).toLocaleString("en-US", { maximumFractionDigits: 0 })
-  const totalInterest = (parseFloat(calculateMonthlyPayment()) * loanTerm[0] * 12 - loanAmount[0]).toLocaleString("en-US", { maximumFractionDigits: 0 })
+  const totalPaid = useMemo(
+    () => (parseFloat(monthlyPayment) * loanTerm[0] * 12).toLocaleString("en-US", { maximumFractionDigits: 0 }),
+    [monthlyPayment, loanTerm]
+  )
+  const totalInterest = useMemo(
+    () => (parseFloat(monthlyPayment) * loanTerm[0] * 12 - loanAmount[0]).toLocaleString("en-US", { maximumFractionDigits: 0 }),
+    [monthlyPayment, loanTerm, loanAmount]
+  )
 
   return (
     <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
@@ -126,7 +133,7 @@ export function FinoviaTools() {
                   <div className="text-center mb-5">
                     <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Monthly Payment</div>
                     <div className="text-4xl font-black text-blue-600 dark:text-blue-400">
-                      ${parseFloat(calculateMonthlyPayment()).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      ${parseFloat(monthlyPayment).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-blue-100 dark:border-blue-900/30">

@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, memo } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Shield, Lock, Clock, ArrowRight, Star, TrendingUp, CreditCard, ArrowUpRight, ArrowDownRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-function AppMockup() {
+/* ── App Mockup — static, memo-ised so it never re-renders ── */
+
+const AppMockup = memo(function AppMockup() {
   return (
     <motion.div
       initial={{ opacity: 0, x: 40, y: 20 }}
@@ -43,8 +45,8 @@ function AppMockup() {
         <div className="px-6 -mt-4 mb-5 flex gap-2">
           {[
             { label: "Checking", balance: "$5,420", color: "bg-blue-600" },
-            { label: "Savings", balance: "$12,750", color: "bg-teal-600" },
-            { label: "Invest", balance: "$8,930", color: "bg-purple-600" },
+            { label: "Savings",  balance: "$12,750", color: "bg-teal-600" },
+            { label: "Invest",   balance: "$8,930",  color: "bg-purple-600" },
           ].map((a) => (
             <div key={a.label} className="flex-1 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 p-3 text-center">
               <div className={`w-2 h-2 rounded-full ${a.color} mx-auto mb-1.5`} />
@@ -77,16 +79,14 @@ function AppMockup() {
           <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Recent</div>
           <div className="space-y-3">
             {[
-              { name: "Salary Deposit", amount: "+$3,500", type: "credit", date: "Today" },
-              { name: "Grocery Store", amount: "-$85.50", type: "debit", date: "Yesterday" },
-              { name: "Investment Return", amount: "+$250", type: "credit", date: "2 days ago" },
+              { name: "Salary Deposit",    amount: "+$3,500", type: "credit", date: "Today" },
+              { name: "Grocery Store",     amount: "-$85.50", type: "debit",  date: "Yesterday" },
+              { name: "Investment Return", amount: "+$250",   type: "credit", date: "2 days ago" },
             ].map((tx) => (
               <div key={tx.name} className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className={`w-8 h-8 rounded-xl flex items-center justify-center ${
-                    tx.type === "credit"
-                      ? "bg-emerald-50 dark:bg-emerald-900/20"
-                      : "bg-red-50 dark:bg-red-900/20"
+                    tx.type === "credit" ? "bg-emerald-50 dark:bg-emerald-900/20" : "bg-red-50 dark:bg-red-900/20"
                   }`}>
                     {tx.type === "credit"
                       ? <ArrowDownRight className="h-4 w-4 text-emerald-600" />
@@ -107,7 +107,7 @@ function AppMockup() {
         </div>
       </div>
 
-      {/* Floating badge */}
+      {/* Floating badge — FDIC */}
       <motion.div
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -122,7 +122,7 @@ function AppMockup() {
         </div>
       </motion.div>
 
-      {/* Floating notification */}
+      {/* Floating notification — rating */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -138,22 +138,40 @@ function AppMockup() {
       </motion.div>
     </motion.div>
   )
-}
+})
+
+/* ── Trust badges data — stable reference outside component ─ */
+
+const trustBadges = [
+  { icon: Shield, label: "FDIC Insured",  accent: false },
+  { icon: Lock,   label: "256-bit SSL",   accent: false },
+  { icon: Clock,  label: "24/7 Support",  accent: false },
+  { icon: Star,   label: "4.9 ★ Rated",  accent: true  },
+] as const
+
+const heroStats = [
+  { value: "2M+",  label: "Customers", color: "text-blue-600 dark:text-blue-400" },
+  { value: "$50B+", label: "Managed",  color: "text-teal-600 dark:text-teal-400" },
+  { value: "99.9%", label: "Uptime",   color: "text-purple-600 dark:text-purple-400" },
+] as const
+
+const headlines = [
+  { text: "Bank Smarter,",    accent: "Not Harder" },
+  { text: "Secure Your",      accent: "Financial Future" },
+  { text: "Open an Account",  accent: "in Minutes" },
+] as const
+
+/* ── Hero section ─────────────────────────────────────────── */
 
 export function HeroSection() {
   const [currentHeadline, setCurrentHeadline] = useState(0)
-  const headlines = [
-    { text: "Bank Smarter,", accent: "Not Harder" },
-    { text: "Secure Your", accent: "Financial Future" },
-    { text: "Open an Account", accent: "in Minutes" },
-  ]
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentHeadline((prev) => (prev + 1) % headlines.length)
     }, 3500)
     return () => clearInterval(interval)
-  }, [headlines.length])
+  }, [])
 
   return (
     <section
@@ -165,7 +183,6 @@ export function HeroSection() {
         <div className="absolute -top-64 -right-64 w-[700px] h-[700px] bg-blue-400/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-64 -left-64 w-[700px] h-[700px] bg-teal-400/10 rounded-full blur-3xl" />
         <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-300/5 rounded-full blur-3xl" />
-        {/* Subtle dot grid */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -188,12 +205,7 @@ export function HeroSection() {
           >
             {/* Trust Badges */}
             <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-8">
-              {[
-                { icon: Shield, label: "FDIC Insured" },
-                { icon: Lock, label: "256-bit SSL" },
-                { icon: Clock, label: "24/7 Support" },
-                { icon: Star, label: "4.9 ★ Rated", accent: true },
-              ].map(({ icon: Icon, label, accent }) => (
+              {trustBadges.map(({ icon: Icon, label, accent }) => (
                 <Badge
                   key={label}
                   variant="secondary"
@@ -246,13 +258,9 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Stats row */}
+            {/* Stats */}
             <div className="grid grid-cols-3 gap-4 max-w-sm mx-auto lg:mx-0">
-              {[
-                { value: "2M+", label: "Customers", color: "text-blue-600 dark:text-blue-400" },
-                { value: "$50B+", label: "Managed", color: "text-teal-600 dark:text-teal-400" },
-                { value: "99.9%", label: "Uptime", color: "text-purple-600 dark:text-purple-400" },
-              ].map((stat) => (
+              {heroStats.map((stat) => (
                 <motion.div
                   key={stat.label}
                   initial={{ opacity: 0, y: 16 }}

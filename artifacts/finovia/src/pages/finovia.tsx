@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -17,9 +18,19 @@ export default function FinoviaPage() {
   })
 
   const [loanAmount, setLoanAmount] = useLocalStorage<number>("finovia-page-loan-amount", 250000)
-  const monthlyPayment = Math.round((loanAmount * (0.05 / 12)) / (1 - Math.pow(1 + 0.05 / 12, -360)))
-  const totalPaid = (monthlyPayment * 360).toLocaleString("en-US")
-  const totalInterest = (monthlyPayment * 360 - loanAmount).toLocaleString("en-US")
+
+  const monthlyPayment = useMemo(
+    () => Math.round((loanAmount * (0.05 / 12)) / (1 - Math.pow(1 + 0.05 / 12, -360))),
+    [loanAmount]
+  )
+  const totalPaid = useMemo(
+    () => (monthlyPayment * 360).toLocaleString("en-US"),
+    [monthlyPayment]
+  )
+  const totalInterest = useMemo(
+    () => (monthlyPayment * 360 - loanAmount).toLocaleString("en-US"),
+    [monthlyPayment, loanAmount]
+  )
 
   return (
     <div className="bg-white dark:bg-gray-900 min-h-screen">

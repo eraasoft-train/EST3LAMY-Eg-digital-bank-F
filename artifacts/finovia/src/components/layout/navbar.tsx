@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Link, useLocation } from "wouter"
 import { Button } from "@/components/ui/button"
 import { Menu, X, Shield, Moon, Sun, Globe, ChevronDown } from "lucide-react"
@@ -14,27 +14,31 @@ import { motion, AnimatePresence } from "framer-motion"
 import { navigation } from "@/data/navigation"
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen]   = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [pathname] = useLocation()
-  const { theme, setTheme } = useTheme()
+  const [pathname]            = useLocation()
+  const { theme, setTheme }   = useTheme()
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12)
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 12)
   }, [])
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+  const toggleTheme = useCallback(() => {
+    setTheme(theme === "dark" ? "light" : "dark")
+  }, [theme, setTheme])
+
+  const closeMenu = useCallback(() => setIsOpen(false), [])
+  const toggleMenu = useCallback(() => setIsOpen(prev => !prev), [])
 
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [handleScroll])
+
+  useEffect(() => { setIsOpen(false) }, [pathname])
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : ""
     return () => { document.body.style.overflow = "" }
   }, [isOpen])
 
@@ -100,7 +104,7 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 className="w-9 h-9 p-0 rounded-xl relative text-gray-500"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={toggleTheme}
                 aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
               >
                 <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -109,17 +113,10 @@ export function Navbar() {
 
               <div className="w-px h-6 bg-gray-200 dark:bg-gray-700 mx-1" />
 
-              <Button
-                variant="outline"
-                size="sm"
-                className="h-9 px-4 rounded-xl bg-transparent text-sm font-medium border-gray-200 dark:border-gray-700"
-              >
+              <Button variant="outline" size="sm" className="h-9 px-4 rounded-xl bg-transparent text-sm font-medium border-gray-200 dark:border-gray-700">
                 Sign In
               </Button>
-              <Button
-                size="sm"
-                className="h-9 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-medium shadow-sm shadow-blue-500/20"
-              >
+              <Button size="sm" className="h-9 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-medium shadow-sm shadow-blue-500/20">
                 Open Account
               </Button>
             </div>
@@ -130,7 +127,7 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 className="w-9 h-9 p-0 rounded-xl text-gray-500"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                onClick={toggleTheme}
                 aria-label="Toggle theme"
               >
                 <Sun className="h-4 w-4 rotate-0 scale-100 dark:-rotate-90 dark:scale-0 transition-all" />
@@ -140,7 +137,7 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 className="w-9 h-9 p-0 rounded-xl"
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={toggleMenu}
                 aria-expanded={isOpen}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
               >
@@ -151,7 +148,7 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu — full screen overlay */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -190,17 +187,10 @@ export function Navbar() {
 
               <div className="border-t border-gray-100 dark:border-gray-800 pt-4 pb-2">
                 <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 h-11 rounded-xl bg-transparent text-sm font-medium border-gray-200 dark:border-gray-700"
-                  >
+                  <Button variant="outline" size="sm" className="flex-1 h-11 rounded-xl bg-transparent text-sm font-medium border-gray-200 dark:border-gray-700">
                     Sign In
                   </Button>
-                  <Button
-                    size="sm"
-                    className="flex-1 h-11 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-semibold shadow-sm shadow-blue-500/20"
-                  >
+                  <Button size="sm" className="flex-1 h-11 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-semibold shadow-sm shadow-blue-500/20">
                     Open Account
                   </Button>
                 </div>
@@ -219,7 +209,7 @@ export function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="fixed inset-0 top-16 z-30 md:hidden bg-black/20 dark:bg-black/40"
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
             aria-hidden="true"
           />
         )}
