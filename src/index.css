@@ -223,6 +223,13 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+
+  /* Default styled links for standard text elements */
+  a:not([class]),
+  a.link-style,
+  .prose a {
+    @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 underline hover:no-underline transition-colors duration-200;
+  }
 }
 
 /**
