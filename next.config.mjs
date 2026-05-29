@@ -47,6 +47,9 @@ const nextConfig = {
       'date-fns/esm/locale/en-US': 'date-fns/locale/en-US',
       'date-fns/esm/locale': 'date-fns/locale',
       'date-fns/esm': 'date-fns',
+      // Direct mappings for react-day-picker v9 structure that may resolve differently in ESM bundlers
+      'date-fns/locale/en-US/index.js': 'date-fns/locale/en-US',
+      'date-fns/locale/en-US/index': 'date-fns/locale/en-US',
     }
 
     if (!isServer && !dev) {
