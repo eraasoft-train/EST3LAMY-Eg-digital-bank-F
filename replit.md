@@ -1,6 +1,6 @@
-# [Project name]
+# Finovia Banking
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A modern banking landing site for Finovia — showcasing accounts, loans, business banking, security, and onboarding features.
 
 ## Run & Operate
 
@@ -22,15 +22,23 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/finovia/src/pages/` — route components (home, accounts, about, business, contact, finovia)
+- `artifacts/finovia/src/components/layout/` — Navbar and Footer
+- `artifacts/finovia/src/components/sections/` — homepage section components
+- `artifacts/finovia/src/data/` — static data files powering the pages
+- `artifacts/finovia/src/index.css` — Tailwind v4 theme with HSL CSS variables
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Pure frontend app (no API routes) — migrated from Next.js to Vite + React with wouter routing
+- `next/link` replaced with `wouter Link`; `usePathname` replaced with `useLocation`
+- `next-themes` ThemeProvider retained (compatible without Next.js)
+- "use client" directives stripped (no-op in Vite/React)
+- Tailwind v4 with `@tailwindcss/vite` plugin; no postcss.config.js
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Multi-page banking marketing site with: hero section, account types, loan calculator, security features, dashboard preview, onboarding wizard, and dedicated pages for Accounts, Finovia (loans), Business, About, and Contact.
 
 ## User preferences
 
