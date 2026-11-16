@@ -11,7 +11,7 @@ const BASE_TITLE = "استعلامي — EST3LAMY"
 export function usePageMeta({ title, description, canonical }: PageMeta) {
   useEffect(() => {
     const fullTitle = title === BASE_TITLE
-      ? `${BASE_TITLE} — Secure Digital Banking for Everyone`
+      ? `${BASE_TITLE} — Digital Investigation & Customer Verification Solutions`
       : `${title} | ${BASE_TITLE}`
 
     document.title = fullTitle

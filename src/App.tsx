@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Toaster } from "@/components/ui/toaster"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { ThemeProvider } from "@/components/theme-provider"
+import { LanguageProvider } from "@/context/language-context"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { PageLoader } from "@/components/layout/page-loader"
@@ -13,7 +14,11 @@ const About      = lazy(() => import("@/pages/about"))
 const Solutions  = lazy(() => import("@/pages/solutions"))
 const Industries = lazy(() => import("@/pages/industries"))
 const HowItWorks = lazy(() => import("@/pages/how-it-works"))
+const Technology = lazy(() => import("@/pages/technology"))
+const Dashboard  = lazy(() => import("@/pages/dashboard"))
 const Contact    = lazy(() => import("@/pages/contact"))
+const Privacy    = lazy(() => import("@/pages/privacy"))
+const Terms      = lazy(() => import("@/pages/terms"))
 const NotFound   = lazy(() => import("@/pages/not-found"))
 
 const queryClient = new QueryClient({
@@ -37,7 +42,11 @@ function Router() {
             <Route path="/solutions"   component={Solutions} />
             <Route path="/industries"  component={Industries} />
             <Route path="/how-it-works" component={HowItWorks} />
+            <Route path="/technology"  component={Technology} />
+            <Route path="/dashboard"   component={Dashboard} />
             <Route path="/contact"     component={Contact} />
+            <Route path="/privacy"     component={Privacy} />
+            <Route path="/terms"       component={Terms} />
             <Route                     component={NotFound} />
           </Switch>
         </Suspense>
@@ -52,9 +61,11 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-            <Router />
-          </WouterRouter>
+          <LanguageProvider>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+              <Router />
+            </WouterRouter>
+          </LanguageProvider>
         </ThemeProvider>
         <Toaster />
       </TooltipProvider>

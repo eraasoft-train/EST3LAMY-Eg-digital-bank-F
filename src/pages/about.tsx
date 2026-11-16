@@ -1,39 +1,53 @@
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Building2, Users, Target } from "lucide-react"
+import { Building2, Users, Shield, Tv } from "lucide-react"
 import { values, milestones } from "@/data/about"
 import { usePageMeta } from "@/hooks/use-page-meta"
+import { useLanguage } from "@/context/language-context"
+import { Link } from "wouter"
+import { Button } from "@/components/ui/button"
 
 export default function AboutPage() {
+  const { language, t } = useLanguage()
+
   usePageMeta({
-    title: "من نحن — استعلامي | رقمنة التحقيق الميداني في مصر",
-    description: "استعلامي منصة رقمية مصرية لرقمنة التحقيق الميداني للمؤسسات المالية. تعرف على رؤيتنا ومهمتنا وقيمنا.",
-    canonical: "https://est3lamy.com/about",
+    title: t(
+      "من نحن — استعلامي | رقمنة التحقيق الميداني في مصر",
+      "About Us — EST3LAMY | Digital Investigation in Egypt"
+    ),
+    description: t(
+      "استعلامي منصة رقمية مصرية رائدة لرقمنة التحقيق الميداني والتحقق الائتماني للمؤسسات المالية، ضمن مجموعة Fair Solutions.",
+      "EST3LAMY is an Egyptian fintech platform digitizing field investigations and applicant verifications for financial institutions."
+    ),
+    canonical: "https://est3lamy.vercel.app/about",
   })
 
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen" dir="rtl">
+    <div className="bg-white dark:bg-gray-900 min-h-screen" dir={language === "ar" ? "rtl" : "ltr"}>
       {/* Hero */}
-      <div className="bg-gradient-to-br from-gray-900 via-gray-900 to-blue-950 pt-24 pb-20 overflow-hidden relative">
+      <div className="bg-gradient-to-br from-gray-950 via-slate-900 to-blue-950 pt-24 pb-20 overflow-hidden relative text-white">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute -top-32 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center"
           >
-            <Badge className="mb-6 bg-white/10 text-white border-white/20 rounded-full px-3 py-1 text-sm">
-              قصتنا
+            <Badge className="mb-6 bg-white/10 text-white border-white/20 rounded-full px-3 py-1 text-xs">
+              {t("هويتنا ورسالتنا", "Our Identity & Mission")}
             </Badge>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight leading-tight">
-              رقمنة التحقيق الميداني<br />في <span className="text-blue-400">المؤسسات المالية</span>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight">
+              {t("رقمنة التحقيق الميداني", "Digitizing Field Investigation")}<br />
+              <span className="text-blue-400">{t("للمؤسسات والكيانات المالية", "For Financial Institutions")}</span>
             </h1>
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              استعلامي وُلدت من تحدٍّ حقيقي: الحاجة إلى جعل عملية التحقيق الميداني أدق وأسرع وأكثر شفافية للمؤسسات المالية في مصر.
+            <p className="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              {t(
+                "استعلامي وُلدت من تحدٍّ حقيقي: تحويل التحقيق الميداني والتحقق من العملاء من مسار ورقي بطيء إلى منظومة رقمية مؤمنة وموثقة جغرافياً في مصر.",
+                "EST3LAMY was born from a concrete industry need: transforming credit field investigations from paper-based routines into a secure, geotagged digital platform."
+              )}
             </p>
           </motion.div>
         </div>
@@ -43,118 +57,181 @@ export default function AboutPage() {
         {/* Story + Visual */}
         <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: language === "ar" ? 20 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="flex-1"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
-              منصة رقمية لحل تحدٍّ حقيقي
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">
+              {t("حل تكنولوجي موجه لصناع القرار الائتماني", "Engineered for Credit Decision Makers")}
             </h2>
-            <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed mb-6">
-              في عالم الائتمان والتمويل، جودة قرار منح التمويل تعتمد اعتماداً مباشراً على جودة التحقيق الميداني. استعلامي جاءت لرقمنة هذه العملية بالكامل — من استلام طلب التحقيق حتى تسليم التقرير الموثق للمؤسسة المالية.
+            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-4">
+              {t(
+                "في عالم التمويل والائتمان المصرفي، يعتمد القرار السليم على دقة وموثوقية المعلومات الميدانية حول محل إقامة العميل، واستقراره الوظيفي، وسلامة أصوله وضماناته. استعلامي رقمنت هذه العملية بالكامل لتقليص وقت التحقيق من أيام إلى ساعات معدودة مع ضمان نزاهة البيانات.",
+                "In credit and institutional financing, sound risk decisions depend entirely on accurate field data regarding applicant residency, employment stability, and verified collateral. EST3LAMY digitizes this lifecycle from request to final delivery."
+              )}
             </p>
-            <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed mb-8">
-              نعمل مع البنوك وشركات التمويل الاستهلاكي والتأجير التمويلي والتمويل العقاري وشركات الفينتك في مصر، لنضمن أن كل قرار ائتماني مبني على معلومات ميدانية دقيقة وموثقة.
+            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-8">
+              {t(
+                "تخدم المنصة قطاعات البنوك، والتمويل الاستهلاكي، والتأجير التمويلي، والتمويل العقاري، وشركات التمويل متناهي الصغر في كافة محافظات جمهورية مصر العربية.",
+                "The platform powers commercial banks, consumer finance firms, leasing companies, mortgage lenders, and microfinance institutions across all 27 governorates."
+              )}
             </p>
-            <div className="flex items-center gap-4 p-5 bg-blue-50 dark:bg-gray-800 rounded-2xl border border-blue-100 dark:border-gray-700">
-              <div className="w-12 h-12 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-center shrink-0">
-                <Building2 className="h-5 w-5 text-blue-600" />
-              </div>
-              <div>
-                <div className="text-sm font-bold text-gray-900 dark:text-white">مجموعة Fair Solutions</div>
-                <div className="text-sm text-gray-500">
-                  <a href="https://fidb-islamic.com/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">fidb-islamic.com</a>
+
+            {/* Fair Solutions Group Box */}
+            <div className="p-5 bg-slate-50 dark:bg-gray-800/60 rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-white dark:bg-gray-700 rounded-xl shadow-sm flex items-center justify-center shrink-0">
+                  <Building2 className="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <div className="text-sm font-bold text-gray-900 dark:text-white">
+                    {t("مجموعة Fair Solutions for Consulting", "Fair Solutions for Consulting Group")}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    <a
+                      href="https://fidb-islamic.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:underline"
+                    >
+                      fidb-islamic.com
+                    </a>
+                  </div>
                 </div>
               </div>
+              <a
+                href="https://eg.linkedin.com/company/fair-solutions-for-consulting-fsc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline" size="sm" className="rounded-xl text-xs">
+                  {t("الملف المؤسسي", "Company Profile")}
+                </Button>
+              </a>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: language === "ar" ? -20 : 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
             className="flex-1 w-full max-w-md grid grid-cols-2 gap-4"
           >
             <div className="space-y-4 pt-10">
-              <div className="rounded-3xl bg-blue-700 h-48 flex items-center justify-center shadow-xl shadow-blue-500/20">
-                <Building2 className="h-16 w-16 text-white/40" />
+              <div className="rounded-3xl bg-blue-700 h-48 flex flex-col items-center justify-center text-white p-6 shadow-xl shadow-blue-500/20 text-center">
+                <Shield className="h-10 w-10 text-blue-200 mb-2" />
+                <span className="text-xs font-bold">{t("تحقيق ميداني موثق", "Verified Field Audit")}</span>
               </div>
-              <div className="rounded-3xl bg-gray-100 dark:bg-gray-800 h-60 p-7 flex flex-col justify-end border border-gray-200 dark:border-gray-700">
-                <div className="text-4xl font-black text-blue-600 dark:text-blue-400 mb-1">480+</div>
-                <div className="text-xs font-bold uppercase tracking-widest text-gray-400">مؤسسة مالية</div>
+              <div className="rounded-3xl bg-gray-100 dark:bg-gray-800 h-52 p-6 flex flex-col justify-end border border-gray-200 dark:border-gray-700">
+                <div className="text-4xl font-black text-blue-600 dark:text-blue-400 mb-1">27</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                  {t("محافظة مغطاة في مصر", "Governorates Covered")}
+                </div>
               </div>
             </div>
             <div className="space-y-4">
-              <div className="rounded-3xl bg-teal-600 h-60 flex items-center justify-center shadow-xl shadow-teal-500/20">
-                <Users className="h-16 w-16 text-white/40" />
+              <div className="rounded-3xl bg-teal-600 h-52 flex flex-col items-center justify-center text-white p-6 shadow-xl shadow-teal-500/20 text-center">
+                <Users className="h-10 w-10 text-teal-200 mb-2" />
+                <span className="text-xs font-bold">{t("أسطول باحثين معتمد", "Certified Researcher Fleet")}</span>
               </div>
-              <div className="rounded-3xl bg-blue-50 dark:bg-gray-800 h-48 p-7 flex flex-col justify-end border border-blue-100 dark:border-gray-700">
-                <Target className="h-7 w-7 text-blue-600 mb-2" />
-                <div className="text-sm font-bold text-gray-600 dark:text-gray-300">تحقيق<br />موثوق</div>
+              <div className="rounded-3xl bg-blue-50 dark:bg-gray-800 h-48 p-6 flex flex-col justify-end border border-blue-100 dark:border-gray-700">
+                <div className="text-3xl font-black text-teal-600 dark:text-teal-400 mb-1">100%</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                  {t("توثيق جغرافي ورقمي", "Geotagged & Digital")}
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
 
+        {/* Media appearance notice */}
+        <div className="mb-24 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-blue-900 to-indigo-950 text-white flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center shrink-0">
+              <Tv className="h-6 w-6 text-amber-300" />
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-1">
+                {t("ظهور إعلامي وتغطية ريادية في مصر", "Public Media Coverage in Egypt")}
+              </h3>
+              <p className="text-xs text-blue-100 leading-relaxed max-w-2xl">
+                {t(
+                  "عُرضت فكرة ومنظومة استعلامي كحل تقني واعد لرقمنة التحقيق والتحقق الائتماني للمؤسسات المالية المصرية في برنامج شارك تانك مصر (Shark Tank Egypt) مسلطةً الضوء على كفاءة التحول الرقمي في هذا القطاع الحيوي.",
+                  "EST3LAMY was spotlighted on Shark Tank Egypt, showcasing its fintech model to digitize and standardize field investigation for financial institutions."
+                )}
+              </p>
+            </div>
+          </div>
+          <Link href="/contact">
+            <Button className="h-10 px-5 rounded-xl bg-white text-blue-950 hover:bg-blue-50 font-bold text-xs shrink-0">
+              {t("طلب عرض تقديمي", "Request Demo")}
+            </Button>
+          </Link>
+        </div>
+
         {/* Values */}
         <div className="mb-24">
-          <div className="text-center mb-14">
-            <Badge variant="secondary" className="mb-4 px-3 py-1 rounded-full text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 border-none font-medium">
-              ما نؤمن به
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <Badge variant="secondary" className="mb-3 px-3 py-1 rounded-full text-blue-600 bg-blue-50 dark:bg-blue-900/30">
+              {t("ركائزنا", "Core Values")}
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">قيمنا الجوهرية</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              {t("قيمنا المهنية", "Our Professional Values")}
+            </h2>
+            <p className="text-sm text-gray-500">
+              {t("المبادئ التي توجه كل تقرير واستعلام ميداني ننجزه.", "The principles guiding every verified investigation report we deliver.")}
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {values.map((v, index) => (
-              <motion.div
-                key={v.titleEn}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
-                viewport={{ once: true }}
-                className="text-center group"
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {values.map((val, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-800/40 hover:shadow-lg transition-all"
               >
-                <div className="w-16 h-16 rounded-2xl bg-gray-50 dark:bg-gray-800 flex items-center justify-center mx-auto mb-5 group-hover:bg-blue-600 group-hover:shadow-lg group-hover:shadow-blue-500/20 transition-all duration-300">
-                  <div className="group-hover:text-white transition-colors duration-300">
-                    {v.icon}
-                  </div>
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{v.title}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{v.description}</p>
-              </motion.div>
+                <div className="mb-4">{val.icon}</div>
+                <h3 className="font-bold text-base text-gray-900 dark:text-white mb-2">
+                  {language === "ar" ? val.title : val.titleEn}
+                </h3>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  {language === "ar" ? val.description : val.descriptionEn}
+                </p>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Timeline */}
-        <div className="border-t border-gray-100 dark:border-gray-800 pt-20">
-          <div className="text-center mb-16">
-            <Badge variant="secondary" className="mb-4 px-3 py-1 rounded-full text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 border-none font-medium">
-              رحلتنا
+        {/* Milestones / Roadmap */}
+        <div>
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <Badge variant="secondary" className="mb-3 px-3 py-1 rounded-full text-blue-600 bg-blue-50 dark:bg-blue-900/30">
+              {t("مسار التطور", "Evolution")}
             </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">مسيرة استعلامي</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+              {t("محطات استعلامي", "EST3LAMY Milestones")}
+            </h2>
           </div>
-          <div className="max-w-3xl mx-auto">
-            <div className="relative border-r-2 border-blue-100 dark:border-gray-800 mr-4 space-y-14">
-              {milestones.map((m, index) => (
-                <motion.div
-                  key={m.yearEn}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="relative pr-10"
-                >
-                  <div className="absolute -right-3 top-1 w-5 h-5 bg-blue-600 rounded-full border-4 border-white dark:border-gray-900 shadow-md" />
-                  <div className="text-sm font-bold text-blue-600 dark:text-blue-400 mb-1 uppercase tracking-widest">{m.year}</div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{m.title}</h3>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{m.description}</p>
-                </motion.div>
-              ))}
-            </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {milestones.map((m, idx) => (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl bg-slate-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800 relative"
+              >
+                <div className="text-xs font-bold text-blue-600 dark:text-blue-400 mb-2">
+                  {language === "ar" ? m.year : m.yearEn}
+                </div>
+                <h3 className="font-bold text-base text-gray-900 dark:text-white mb-2">
+                  {language === "ar" ? m.title : m.titleEn}
+                </h3>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  {language === "ar" ? m.description : m.descriptionEn}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
