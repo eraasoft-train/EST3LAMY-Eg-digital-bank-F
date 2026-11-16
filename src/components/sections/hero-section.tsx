@@ -18,67 +18,46 @@ const PlatformMockup = memo(function PlatformMockup() {
       className="relative w-full max-w-sm mx-auto lg:mx-0"
       aria-hidden="true"
     >
-      <div className="absolute inset-0 bg-blue-400/20 rounded-3xl blur-3xl scale-110 pointer-events-none" />
+      <div className="absolute inset-0 bg-blue-500/20 rounded-3xl blur-3xl scale-110 pointer-events-none" />
 
-      <div className="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
-        {/* Top bar */}
-        <div className="bg-gradient-to-r from-blue-700 to-blue-800 px-6 pt-6 pb-8">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg bg-white/20 flex items-center justify-center">
-                <Shield className="h-4 w-4 text-white" />
-              </div>
-              <span className="text-white font-bold text-sm">
-                {t("استعلامي — العمليات الميدانية", "EST3LAMY Field Ops")}
-              </span>
+      <div className="relative bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-200/80 dark:border-gray-800 overflow-hidden group">
+        {/* High-Resolution Hero Mockup Image */}
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
+          <img
+            src="/hero-mockup.jpg"
+            alt="EST3LAMY Field Operations Platform & Mobile App Mockup"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent pointer-events-none" />
+
+          {/* Top Bar Overlay */}
+          <div className="absolute top-3 inset-x-3 flex items-center justify-between">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-xl bg-slate-900/85 backdrop-blur-md border border-white/10 text-white text-[11px] font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>{t("استعلامي — العمليات الميدانية", "EST3LAMY Field Ops")}</span>
             </div>
-            <Badge className="bg-white/20 text-white border-white/30 text-xs rounded-full px-2 py-0.5">
+            <Badge className="bg-blue-600/90 text-white border-0 text-[10px] rounded-full px-2 py-0.5">
               ● {t("مباشر", "Live")}
             </Badge>
           </div>
-          <div className="text-white/70 text-xs font-medium uppercase tracking-wider mb-1">
-            {t("إجمالي الحالات اليوم", "Total Cases Today")}
-          </div>
-          <div className="text-4xl font-black text-white mb-1">73</div>
-          <div className="flex items-center gap-1.5 text-emerald-300 text-xs font-medium">
-            <TrendingUp className="h-3.5 w-3.5" />
-            {t("31 منجزة · 24 جديدة · 18 قيد الزيارة", "31 Done · 24 New · 18 In Field")}
-          </div>
-        </div>
 
-        {/* Case cards */}
-        <div className="px-5 -mt-4 mb-5 space-y-2">
-          {[
-            { id: "EST-1048", name: "أيمن رفعت الشناوي",    type: "استعلام ائتماني", status: "زيارة ميدانية", color: "bg-amber-500" },
-            { id: "EST-1049", name: "سارة عبد المنعم الباز", type: "تحقق محل إقامة", status: "مراجعة جودة",   color: "bg-purple-500" },
-            { id: "EST-1050", name: "مؤسسة النور للصناعات",  type: "معاينة أصول",    status: "معتمدة ومسلمة", color: "bg-emerald-500" },
-          ].map((c) => (
-            <div key={c.id} className="bg-white dark:bg-gray-800 rounded-xl shadow border border-gray-100 dark:border-gray-700 p-3 flex items-center gap-3">
-              <div className={`w-2 h-8 rounded-full ${c.color} shrink-0`} />
-              <div className="flex-1 min-w-0">
-                <div className="text-xs font-bold text-gray-900 dark:text-white truncate">{c.name}</div>
-                <div className="text-[10px] text-gray-400">{c.type}</div>
+          {/* Bottom Telemetry Bar */}
+          <div className="absolute bottom-3 inset-x-3 p-3 rounded-2xl bg-slate-900/85 backdrop-blur-md border border-white/10 text-white">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[11px] text-gray-300 font-medium">
+                {t("إجمالي الحالات اليوم", "Active Cases Today")}
+              </span>
+              <div className="flex items-center gap-1 text-emerald-400 text-[11px] font-semibold">
+                <TrendingUp className="h-3 w-3" />
+                <span>+15% SLA</span>
               </div>
-              <span className="text-[10px] font-semibold text-gray-500 shrink-0">{c.status}</span>
             </div>
-          ))}
-        </div>
-
-        {/* Researcher row */}
-        <div className="px-5 pb-5">
-          <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
-            {t("الباحثون في الميدان", "Active Field Researchers")}
-          </div>
-          <div className="flex items-center gap-2">
-            {["ك", "أ", "م"].map((initial, i) => (
-              <div key={i} className="flex items-center gap-1.5">
-                <div className="w-7 h-7 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 text-xs font-bold">
-                  {initial}
-                </div>
-              </div>
-            ))}
-            <div className="text-xs text-gray-400 mr-1">
-              {t("+14 باحث نشط في المحافظات", "+14 active researchers")}
+            <div className="flex items-center justify-between text-xs font-bold text-gray-100">
+              <span>73 {t("حالة تحت المعالجة", "Cases in Queue")}</span>
+              <span className="text-[10px] font-normal text-gray-400">
+                {t("27 محافظة", "27 Governorates")}
+              </span>
             </div>
           </div>
         </div>

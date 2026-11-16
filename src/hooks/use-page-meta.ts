@@ -3,7 +3,7 @@ import type { PageMeta } from "@/types/meta"
 
 const BASE_TITLE = "استعلامي — EST3LAMY"
 
-export function usePageMeta({ title, description, canonical }: PageMeta) {
+export function usePageMeta({ title, description, canonical, noIndex }: PageMeta) {
   useEffect(() => {
     const fullTitle = title === BASE_TITLE
       ? `${BASE_TITLE} — Digital Investigation & Customer Verification Solutions`
@@ -26,6 +26,11 @@ export function usePageMeta({ title, description, canonical }: PageMeta) {
     setMeta('meta[name="description"]', description)
     setMeta('meta[property="og:title"]', fullTitle)
     setMeta('meta[property="og:description"]', description)
+    if (noIndex) {
+      setMeta('meta[name="robots"]', 'noindex, nofollow')
+    } else {
+      setMeta('meta[name="robots"]', 'index, follow')
+    }
     if (canonical) {
       setMeta('meta[property="og:url"]', canonical)
       let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null

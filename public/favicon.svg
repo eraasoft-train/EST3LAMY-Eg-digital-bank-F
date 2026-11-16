@@ -1,5 +1,29 @@
 <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180" rx="40" fill="#2563EB"/>
-  <path d="M90 36L126 52V86C126 108 111 127 90 134C69 127 54 108 54 86V52L90 36Z" fill="white" fill-opacity="0.2" stroke="white" stroke-width="3"/>
-  <path d="M79 91L88 100L104 81" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#22D3EE" />
+    </linearGradient>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect width="180" height="180" rx="44" fill="#0A0F1D" />
+  <rect x="2" y="2" width="176" height="176" rx="42" stroke="url(#shieldGrad)" stroke-width="3" stroke-opacity="0.5" />
+  
+  <!-- Outer Shield Outline -->
+  <path d="M90 32L132 50V90C132 116 114 139 90 148C66 139 48 116 48 90V50L90 32Z" fill="url(#shieldGrad)" fill-opacity="0.15" stroke="url(#shieldGrad)" stroke-width="4" stroke-linejoin="round" />
+  
+  <!-- Inner Crosshair / Field Investigation Radar -->
+  <circle cx="90" cy="90" r="32" stroke="url(#accentGrad)" stroke-width="3" stroke-opacity="0.4" stroke-dasharray="4 4" />
+  <circle cx="90" cy="90" r="18" stroke="url(#accentGrad)" stroke-width="3" />
+  <line x1="90" y1="62" x2="90" y2="72" stroke="url(#accentGrad)" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="90" y1="108" x2="90" y2="118" stroke="url(#accentGrad)" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="62" y1="90" x2="72" y2="90" stroke="url(#accentGrad)" stroke-width="3.5" stroke-linecap="round" />
+  <line x1="108" y1="90" x2="118" y2="90" stroke="url(#accentGrad)" stroke-width="3.5" stroke-linecap="round" />
+  
+  <!-- Center Verified Pulse Dot -->
+  <circle cx="90" cy="90" r="5" fill="#38BDF8" />
 </svg>

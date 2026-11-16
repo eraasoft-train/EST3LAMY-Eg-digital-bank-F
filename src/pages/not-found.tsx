@@ -29,6 +29,7 @@ export default function NotFound() {
       "The requested page is not in the EST3LAMY registry. Check the URL or explore our core operations."
     ),
     canonical: "https://est3lamy.vercel.app/404",
+    noIndex: true,
   })
 
   const allDestinations = [

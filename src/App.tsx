@@ -66,7 +66,9 @@ export default function App() {
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <LanguageProvider>
             <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-              <Router />
+              <ErrorBoundary variant="fullscreen">
+                <Router />
+              </ErrorBoundary>
             </WouterRouter>
           </LanguageProvider>
         </ThemeProvider>

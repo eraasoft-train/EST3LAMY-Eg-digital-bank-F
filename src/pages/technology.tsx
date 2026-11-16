@@ -177,6 +177,62 @@ export default function TechnologyPage() {
           })}
         </div>
 
+        {/* Nationwide Fleet & 27 Governorates Coverage Showcase */}
+        <div className="mb-20 rounded-3xl bg-slate-950 border border-slate-800 text-white overflow-hidden shadow-2xl relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+            {/* Visual Map Side */}
+            <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-auto lg:h-[460px] overflow-hidden bg-slate-900 group">
+              <img
+                src="/egypt-coverage.jpg"
+                alt="EST3LAMY 27 Egyptian Governorates Field Investigation Fleet Map"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-slate-950 via-slate-950/40 to-transparent pointer-events-none" />
+              
+              <div className="absolute top-4 start-4 inline-flex items-center gap-2 px-3 py-1 rounded-xl bg-slate-900/80 backdrop-blur-md border border-white/10 text-[11px] font-semibold text-cyan-400">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+                <span>{t("تغطية حية لجمهورية مصر العربية", "Live Nationwide Egypt Telemetry")}</span>
+              </div>
+            </div>
+
+            {/* Content Side */}
+            <div className="lg:col-span-5 p-6 sm:p-10 lg:p-12 relative z-10">
+              <Badge className="mb-3 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full px-3 py-1 text-xs font-semibold">
+                {t("شبكة الباحثين الميدانيين", "Field Researcher Fleet")}
+              </Badge>
+              <h3 className="text-2xl sm:text-3xl font-extrabold mb-4 leading-tight">
+                {t("تغطية ميدانية ذكية لكافة محافظات مصر الـ 27", "Smart Geospatial Coverage Across All 27 Governorates")}
+              </h3>
+              <p className="text-sm text-slate-300 leading-relaxed mb-6">
+                {t(
+                  "تنتشر شبكة الباحثين المعتمدين لمنصة استعلامي في كافة المراكز والمدن والقرى المصرية، مدعومين بنظام توجيه وتكليف جغرافي فوري يقلص زمن المعاينة الميدانية إلى أقل من 48 ساعة.",
+                  "EST3LAMY field fleet operates across Egyptian urban centers and rural districts, powered by intelligent geofencing and instant dispatch dispatching inquiries in under 48 hours."
+                )}
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-800 text-xs">
+                <div>
+                  <div className="text-2xl font-black text-cyan-400 mb-0.5">27</div>
+                  <div className="text-slate-400">{t("محافظة مغطاة بالكامل", "Governorates Covered")}</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-black text-blue-400 mb-0.5">24-48h</div>
+                  <div className="text-slate-400">{t("متوسط تسليم التقرير", "Average Report Delivery")}</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-black text-emerald-400 mb-0.5">100%</div>
+                  <div className="text-slate-400">{t("توثيق جغرافي GPS", "GPS Geotagged Evidence")}</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-black text-purple-400 mb-0.5">Bank SLA</div>
+                  <div className="text-slate-400">{t("معايير جودة مصرفية", "Institutional Quality Standards")}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Security & Regulatory Compliance Banner */}
         <div className="rounded-3xl bg-slate-900 text-white p-8 md:p-12 overflow-hidden relative">
           <div className="relative z-10 max-w-3xl">

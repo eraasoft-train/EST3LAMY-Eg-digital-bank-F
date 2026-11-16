@@ -53,6 +53,20 @@ export class ErrorBoundary extends Component<Props, State> {
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({ errorInfo })
     console.error("[EST3LAMY System Exception]:", error, errorInfo)
+
+    // Handle Vite/Vercel chunk deployment mismatch gracefully
+    const isChunkError =
+      error?.message?.includes("Failed to fetch dynamically imported module") ||
+      error?.message?.includes("Importing a module script failed") ||
+      error?.message?.includes("error loading dynamically imported module")
+
+    if (isChunkError && typeof window !== "undefined") {
+      const hasReloaded = sessionStorage.getItem("est3lamy_chunk_reload")
+      if (!hasReloaded) {
+        sessionStorage.setItem("est3lamy_chunk_reload", "true")
+        window.location.reload()
+      }
+    }
   }
 
   private handleReset = () => {
