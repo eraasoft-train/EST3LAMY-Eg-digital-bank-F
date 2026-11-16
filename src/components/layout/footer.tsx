@@ -1,5 +1,5 @@
 import { Link } from "wouter"
-import { Shield, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { Building2, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useLocalStorage } from "@/hooks/use-local-storage"
@@ -17,39 +17,38 @@ interface FooterColumn {
 
 const footerColumns: FooterColumn[] = [
   {
-    title: "Banking",
+    title: "الحلول",
     links: [
-      { label: "Checking Accounts",  href: "/accounts" },
-      { label: "Savings Accounts",   href: "/accounts" },
-      { label: "Student Accounts",   href: "/accounts" },
-      { label: "Business Banking",   href: "/business" },
+      { label: "التحقيق الميداني",           href: "/solutions"    },
+      { label: "التحقق من العملاء",          href: "/solutions"    },
+      { label: "إدارة الباحثين الميدانيين",  href: "/solutions"    },
+      { label: "لوحات التحليل والمتابعة",   href: "/solutions"    },
     ],
   },
   {
-    title: "Loans",
+    title: "القطاعات",
     links: [
-      { label: "Home Loans",         href: "/finovia" },
-      { label: "Auto Loans",         href: "/finovia" },
-      { label: "Personal Loans",     href: "/finovia" },
-      { label: "Business Loans",     href: "/business" },
+      { label: "البنوك",                       href: "/industries"   },
+      { label: "شركات التمويل الاستهلاكي",   href: "/industries"   },
+      { label: "التأجير التمويلي",            href: "/industries"   },
+      { label: "التمويل العقاري",             href: "/industries"   },
     ],
   },
   {
-    title: "Company",
+    title: "الشركة",
     links: [
-      { label: "About Us",           href: "/about"   },
-      { label: "Careers",            href: "#"        },
-      { label: "Investor Relations", href: "#"        },
-      { label: "Press Room",         href: "#"        },
+      { label: "من نحن",          href: "/about"   },
+      { label: "كيف يعمل النظام", href: "/how-it-works" },
+      { label: "Fair Solutions",  href: "https://fidb-islamic.com/" },
+      { label: "تواصل معنا",     href: "/contact" },
     ],
   },
   {
-    title: "Support",
+    title: "الدعم",
     links: [
-      { label: "Contact Us",         href: "/contact" },
-      { label: "Help Center",        href: "#"        },
-      { label: "Branch Locator",     href: "#"        },
-      { label: "Security Center",    href: "#"        },
+      { label: "تواصل معنا",         href: "/contact" },
+      { label: "سياسة الخصوصية",    href: "#"        },
+      { label: "الشروط والأحكام",   href: "#"        },
     ],
   },
 ]
@@ -62,14 +61,13 @@ const socialLinks = [
 ]
 
 const legalLinks = [
-  "Privacy Policy",
-  "Terms of Service",
-  "Accessibility",
-  "Disclosures",
+  "سياسة الخصوصية",
+  "الشروط والأحكام",
+  "إمكانية الوصول",
 ]
 
 export function Footer() {
-  const [newsletterEmail, setNewsletterEmail] = useLocalStorage<string>("finovia-newsletter-draft", "")
+  const [newsletterEmail, setNewsletterEmail] = useLocalStorage<string>("est3lamy-newsletter-draft", "")
   const [subscribed, setSubscribed] = useState(false)
 
   const handleSubscribe = () => {
@@ -80,34 +78,35 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-gray-950 text-white">
+    <footer className="bg-gray-950 text-white" dir="rtl">
 
       {/* Newsletter Bar */}
       <div className="border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-white mb-1">Stay up to date</h3>
-              <p className="text-sm text-gray-400">Get the latest banking insights and product updates.</p>
+              <h3 className="text-lg font-semibold text-white mb-1">ابقَ على اطلاع</h3>
+              <p className="text-sm text-gray-400">آخر التحديثات حول منصة استعلامي وأفضل الممارسات في التحقيق الميداني.</p>
             </div>
             {subscribed ? (
-              <p className="text-sm font-medium text-teal-400">Thanks for subscribing!</p>
+              <p className="text-sm font-medium text-teal-400">شكراً! تم تسجيلك بنجاح.</p>
             ) : (
               <div className="flex gap-2 w-full md:w-auto md:max-w-sm">
                 <Input
                   type="email"
-                  placeholder="Enter your email"
-                  className="h-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 rounded-xl focus:border-blue-500 focus:ring-blue-500"
+                  placeholder="بريدك الإلكتروني"
+                  className="h-10 bg-gray-800 border-gray-700 text-white placeholder:text-gray-500 rounded-xl focus:border-blue-500 focus:ring-blue-500 text-right"
                   value={newsletterEmail}
                   onChange={e => setNewsletterEmail(e.target.value)}
                   onKeyDown={e => e.key === "Enter" && handleSubscribe()}
+                  dir="rtl"
                 />
                 <Button
                   size="sm"
                   className="h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 shrink-0"
                   onClick={handleSubscribe}
                 >
-                  Subscribe
+                  اشترك
                 </Button>
               </div>
             )}
@@ -121,25 +120,34 @@ export function Footer() {
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-5" aria-label="Finovia home">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
-                <Shield className="h-5 w-5 text-white" />
+            <Link href="/" className="flex items-center gap-2.5 mb-5" aria-label="استعلامي - الصفحة الرئيسية">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-700 to-blue-800 flex items-center justify-center">
+                <Building2 className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">Finovia</span>
+              <div className="flex flex-col leading-tight">
+                <span className="text-lg font-bold text-white">استعلامي</span>
+                <span className="text-[10px] font-medium text-blue-400 uppercase tracking-wider">EST3LAMY</span>
+              </div>
             </Link>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6 max-w-xs">
-              Secure, innovative banking for the digital age. Your financial future starts here — protected and empowered.
+            <p className="text-sm text-gray-400 leading-relaxed mb-3 max-w-xs">
+              منصة رقمية متكاملة لرقمنة عملية التحقيق الميداني والتحقق من العملاء للمؤسسات المالية في مصر.
+            </p>
+            <p className="text-xs text-gray-500 mb-6">
+              شركة من مجموعة{" "}
+              <a href="https://fidb-islamic.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">
+                Fair Solutions for Consulting
+              </a>
             </p>
 
             {/* Page quick-links */}
             <div className="flex flex-wrap gap-2 mb-6">
               {[
-                { label: "Home",     href: "/"         },
-                { label: "Accounts", href: "/accounts" },
-                { label: "Loans",    href: "/finovia"  },
-                { label: "Business", href: "/business" },
-                { label: "About",    href: "/about"    },
-                { label: "Contact",  href: "/contact"  },
+                { label: "الرئيسية",    href: "/"             },
+                { label: "الحلول",      href: "/solutions"    },
+                { label: "كيف يعمل",   href: "/how-it-works" },
+                { label: "القطاعات",   href: "/industries"   },
+                { label: "من نحن",     href: "/about"        },
+                { label: "تواصل معنا", href: "/contact"      },
               ].map(({ label, href }) => (
                 <Link
                   key={label}
@@ -175,12 +183,23 @@ export function Footer() {
               <ul className="space-y-3">
                 {col.links.map(({ label, href }) => (
                   <li key={label}>
-                    <Link
-                      href={href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
-                    >
-                      {label}
-                    </Link>
+                    {href.startsWith("http") ? (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                      >
+                        {label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={href}
+                        className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
+                      >
+                        {label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -190,8 +209,8 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="text-xs text-gray-500 text-center sm:text-left">
-            © {new Date().getFullYear()} Finovia. All rights reserved. Member FDIC. Equal Housing Lender.
+          <div className="text-xs text-gray-500 text-center sm:text-right">
+            © {new Date().getFullYear()} استعلامي — EST3LAMY. جميع الحقوق محفوظة.
           </div>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {legalLinks.map((item) => (

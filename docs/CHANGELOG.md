@@ -1,26 +1,31 @@
-# 📜 Changelog
+# Changelog — استعلامي (EST3LAMY)
 
-All notable changes to the Finovia banking application are recorded in this document. This project adheres to Semantic Versioning.
+All notable changes to the EST3LAMY investigation platform are recorded here.
 
----
+## [2.0.0] — Full Platform Transformation
 
-## [1.0.0] - 2026-05-29
+### Changed
+- Complete rebrand from Finovia to EST3LAMY — Eg Digital Investigation Platform
+- All content, copy, and business identity updated to reflect EST3LAMY's real business
+- Navigation restructured: Home, Solutions, How It Works, Industries, About, Contact
 
 ### Added
-- Replaced the template Next.js `Dr-Medicare` setup with Finovia's custom React + Vite application.
-- Configured a standalone `tsconfig.json` for independent building.
-- Set up a clean `package.json` with React 19, Vite 6, and Tailwind CSS v4 dependencies.
-- Added path aliases (`@/*`) inside `vite.config.ts` for absolute imports.
-- Re-styled home, about, business, contact, and accounts pages.
-- Standardized UI using `shadcn/ui` components based on Radix UI primitives.
-- Integrated the interactive **Loan payment estimator slider** with local storage state persistence.
-- Added comprehensive documentation files:
-  - `docs/STRUCTURE.md`
-  - `docs/TECHNOLOGIES.md`
-  - `docs/FEATURES.md`
-  - `docs/CONTRIBUTING.md`
-  - `docs/DEPLOYMENT.md`
-  - `docs/SECURITY.md`
-  - `docs/CHANGELOG.md`
-- Created a polished repository `README.md` with ASCII logos, feature charts, and tech badges.
-- Setup standard `.gitignore` rules for Vite and Node.js.
+- New `solutions.tsx` page — platform capabilities and service packages
+- New `how-it-works.tsx` page — 8-step investigation workflow
+- New `industries.tsx` page — sectors served (Banks, Consumer Finance, Leasing, etc.)
+- EST3LAMY investigation case management dashboard preview
+- Arabic RTL support throughout the application
+- Cairo font for Arabic typography
+- EST3LAMY brand data files (investigation, verification, researcher workflows)
+
+### Removed
+- Finovia retail banking content (loan calculator, FDIC insurance claims, etc.)
+- `finovia.tsx` page (loan products page)
+- `accounts.tsx` page (personal banking accounts)
+- `business.tsx` page (commercial banking)
+- `data/finovia.ts` (loan products data)
+
+### Fixed
+- All SEO metadata updated to EST3LAMY
+- `use-page-meta.ts` base title updated
+- Unused import warnings cleaned up

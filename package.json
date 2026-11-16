@@ -1,5 +1,5 @@
 {
-  "name": "finovia",
+  "name": "est3lamy",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -77,5 +77,8 @@
   "optionalDependencies": {
     "@tailwindcss/oxide-linux-x64-gnu": "^4.0.0",
     "@tailwindcss/oxide-win32-x64-msvc": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }

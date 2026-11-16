@@ -1,40 +1,25 @@
-# 🛡️ Security Guidelines & Policy
+# Security — EST3LAMY
 
-Finovia treats client security as the highest priority. This document summarizes internal web application security standards and vulnerability reporting.
+EST3LAMY treats client and institution data security as the highest priority.
 
----
+## Data Protection
+- All case and client data encrypted in transit and at rest
+- Role-based access control for institutions, researchers, and reviewers
+- Precise permission scopes per user role
 
-## 🔒 Internal Security Practices
+## Field Verification Security
+- GPS location verification of field researchers
+- Timestamped evidence collection prevents backdating
+- Photographic documentation with metadata
 
-### Content Security Policy (CSP)
-*   Deploy with headers restricting source origins for scripts, styles, images, and frames.
-*   Prevent inline scripting dynamically via HTML headers.
+## Reporting Integrity
+- Reports undergo quality control review before delivery
+- Audit trail of all case status changes
+- Documented delivery to the financial institution
 
-### Cross-Site Scripting (XSS) Prevention
-*   React automatically encodes strings rendered in the virtual DOM.
-*   Avoid using `dangerouslySetInnerHTML` unless input is strictly sanitized via libraries like `DOMPurify`.
-*   Sanitize all values collected via contact forms.
+## Responsible Disclosure
+If you discover a potential security vulnerability within EST3LAMY, please report it responsibly:
 
-### Cross-Site Request Forgery (CSRF) Mitigation
-*   API sessions must implement `SameSite=Strict` cookies.
-*   Include CSRF tokens when communicating with transactional backends.
-
----
-
-## ⚠️ Reporting Vulnerabilities
-
-If you discover a potential security vulnerability within the Finovia system, please report it immediately:
-
-1.  **Email**: Send detail logs and reproducibility steps to `security@finovia.com`.
-2.  **Encrypted Report**: If possible, encrypt your report details using PGP keys.
-3.  **Do Not Disclose Publicly**: Give our internal team at least 30 days to mitigate the issue before publishing details.
-
----
-
-## 🔍 Security Audit Checklist
-
-When implementing new API integrations or forms:
-- [ ] Ensure all API endpoints utilize TLS v1.3.
-- [ ] Mask sensitive numbers (e.g. show `**** **** **** 1234` for card numbers).
-- [ ] Enforce strong passwords and OTP parameters during auth.
-- [ ] Log off inactive user sessions after 15 minutes of inactivity.
+1. **Email**: Send details and reproduction steps to `security@est3lamy.com`
+2. Do not publish the vulnerability publicly until it has been addressed
+3. Allow reasonable time for a fix before any disclosure

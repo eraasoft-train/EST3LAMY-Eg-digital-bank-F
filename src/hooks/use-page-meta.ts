@@ -6,7 +6,7 @@ interface PageMeta {
   canonical?: string
 }
 
-const BASE_TITLE = "Finovia Banking"
+const BASE_TITLE = "استعلامي — EST3LAMY"
 
 export function usePageMeta({ title, description, canonical }: PageMeta) {
   useEffect(() => {

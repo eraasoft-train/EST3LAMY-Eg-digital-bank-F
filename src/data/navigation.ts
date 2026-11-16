@@ -1,7 +1,7 @@
 export const navigation = [
-  { name: "Accounts", href: "/accounts" },
-  { name: "Finovia", href: "/finovia" },
-  { name: "Business", href: "/business" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "الحلول",        nameEn: "Solutions",    href: "/solutions"    },
+  { name: "كيف يعمل",     nameEn: "How It Works", href: "/how-it-works" },
+  { name: "القطاعات",     nameEn: "Industries",   href: "/industries"   },
+  { name: "من نحن",       nameEn: "About",        href: "/about"        },
+  { name: "تواصل معنا",   nameEn: "Contact",      href: "/contact"      },
 ]
