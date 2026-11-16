@@ -7,6 +7,7 @@ import {
   Settings,
 } from "lucide-react"
 import { motion } from "framer-motion"
+import { Link } from "wouter"
 import { Badge } from "@/components/ui/badge"
 import { useLanguage } from "@/context/language-context"
 
@@ -57,8 +58,8 @@ export function DashboardSidebar({
       className="flex flex-col bg-white dark:bg-gray-900 border-e border-gray-200 dark:border-gray-800 h-full shrink-0 overflow-hidden"
     >
       {/* Header */}
-      <div className="flex items-center gap-3 px-4 h-16 border-b border-gray-100 dark:border-gray-800 shrink-0">
-        <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center shrink-0">
+      <Link href="/" className="flex items-center gap-3 px-4 h-16 border-b border-gray-100 dark:border-gray-800 shrink-0 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+        <div className="w-8 h-8 rounded-lg bg-blue-700 flex items-center justify-center shrink-0 shadow-sm shadow-blue-500/30">
           <ShieldCheck className="h-4 w-4 text-white" />
         </div>
         {!isCollapsed && (
@@ -76,7 +77,7 @@ export function DashboardSidebar({
             </div>
           </motion.div>
         )}
-      </div>
+      </Link>
 
       {/* Nav */}
       <nav className="flex-1 py-3 px-2 space-y-0.5 overflow-y-auto">

@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react"
-import { Switch, Route, Router as WouterRouter } from "wouter"
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { Toaster } from "@/components/ui/toaster"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -32,10 +32,13 @@ const queryClient = new QueryClient({
 })
 
 function Router() {
+  const [location] = useLocation()
+  const isDashboard = location === "/dashboard" || location.startsWith("/dashboard/")
+
   return (
     <>
-      <Navbar />
-      <main className="min-h-screen">
+      {!isDashboard && <Navbar />}
+      <main className={isDashboard ? "h-screen overflow-hidden" : "min-h-screen"}>
         <ErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Switch>
@@ -54,7 +57,7 @@ function Router() {
           </Suspense>
         </ErrorBoundary>
       </main>
-      <Footer />
+      {!isDashboard && <Footer />}
     </>
   )
 }
