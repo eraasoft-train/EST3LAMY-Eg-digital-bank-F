@@ -1,6 +1,6 @@
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { Building2, Users, Shield, Tv } from "lucide-react"
+import { Building2, Tv } from "lucide-react"
 import { values, milestones } from "@/data/about"
 import { usePageMeta } from "@/hooks/use-page-meta"
 import { useLanguage } from "@/context/language-context"
@@ -118,29 +118,46 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
-            className="flex-1 w-full max-w-md grid grid-cols-2 gap-4"
+            className="flex-1 w-full max-w-xl"
           >
-            <div className="space-y-4 pt-10">
-              <div className="rounded-3xl bg-blue-700 h-48 flex flex-col items-center justify-center text-white p-6 shadow-xl shadow-blue-500/20 text-center">
-                <Shield className="h-10 w-10 text-blue-200 mb-2" />
-                <span className="text-xs font-bold">{t("تحقيق ميداني موثق", "Verified Field Audit")}</span>
+            <div className="relative rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl bg-slate-900 group">
+              <img
+                src="/about-mission.jpg"
+                alt="EST3LAMY Digital Field Operations Command Center"
+                className="w-full h-auto aspect-video object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent pointer-events-none" />
+              
+              {/* Overlay badges */}
+              <div className="absolute top-4 start-4 flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-[11px] font-bold bg-blue-600/90 text-white backdrop-blur-md shadow-md flex items-center gap-1.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                  {t("غرفة عمليات التحقيق الميداني", "Field Operations Command")}
+                </span>
               </div>
-              <div className="rounded-3xl bg-gray-100 dark:bg-gray-800 h-52 p-6 flex flex-col justify-end border border-gray-200 dark:border-gray-700">
-                <div className="text-4xl font-black text-blue-600 dark:text-blue-400 mb-1">27</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                  {t("محافظة مغطاة في مصر", "Governorates Covered")}
+
+              {/* Bottom stats ribbon */}
+              <div className="absolute bottom-4 inset-x-4 p-3.5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white flex items-center justify-between">
+                <div>
+                  <div className="text-xl font-black text-blue-400">27</div>
+                  <div className="text-[10px] text-gray-300 font-medium">
+                    {t("محافظة مغطاة في مصر", "Governorates Covered")}
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="rounded-3xl bg-teal-600 h-52 flex flex-col items-center justify-center text-white p-6 shadow-xl shadow-teal-500/20 text-center">
-                <Users className="h-10 w-10 text-teal-200 mb-2" />
-                <span className="text-xs font-bold">{t("أسطول باحثين معتمد", "Certified Researcher Fleet")}</span>
-              </div>
-              <div className="rounded-3xl bg-blue-50 dark:bg-gray-800 h-48 p-6 flex flex-col justify-end border border-blue-100 dark:border-gray-700">
-                <div className="text-3xl font-black text-teal-600 dark:text-teal-400 mb-1">100%</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                  {t("توثيق جغرافي ورقمي", "Geotagged & Digital")}
+                <div className="h-8 w-px bg-white/15" />
+                <div>
+                  <div className="text-xl font-black text-emerald-400">100%</div>
+                  <div className="text-[10px] text-gray-300 font-medium">
+                    {t("توثيق جغرافي ورقمي", "Geotagged & Digital")}
+                  </div>
+                </div>
+                <div className="h-8 w-px bg-white/15" />
+                <div>
+                  <div className="text-xl font-black text-amber-400">&lt; 24h</div>
+                  <div className="text-[10px] text-gray-300 font-medium">
+                    {t("متوسط وقت الإنجاز", "Avg Turnaround")}
+                  </div>
                 </div>
               </div>
             </div>

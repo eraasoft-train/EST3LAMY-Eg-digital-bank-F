@@ -6,7 +6,7 @@ import { workflowSteps } from "@/data/workflow"
 import { usePageMeta } from "@/hooks/use-page-meta"
 import { useLanguage } from "@/context/language-context"
 import { Link } from "wouter"
-import { LayoutDashboard } from "lucide-react"
+import { LayoutDashboard, Smartphone, MapPin, ShieldCheck } from "lucide-react"
 
 export default function HowItWorksPage() {
   const { language, t } = useLanguage()
@@ -46,6 +46,53 @@ export default function HowItWorksPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+
+        {/* Mobile App In-Field Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-20 rounded-3xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl bg-slate-900 group"
+        >
+          <div className="relative aspect-video sm:aspect-[21/9] overflow-hidden">
+            <img
+              src="/field-mobile-app.jpg"
+              alt="EST3LAMY Mobile App for Field Researchers"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              loading="lazy"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent pointer-events-none" />
+
+            <div className="absolute top-4 start-4 flex items-center gap-2">
+              <Badge className="bg-blue-600/90 text-white backdrop-blur-md border-0 text-xs font-bold gap-1.5 px-3 py-1">
+                <Smartphone className="h-3.5 w-3.5" />
+                {t("تطبيق الباحث الميداني — إصدار العمليات", "Field Ops Mobile App")}
+              </Badge>
+            </div>
+
+            <div className="absolute bottom-4 inset-x-4 sm:inset-x-6 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h3 className="font-bold text-sm sm:text-base flex items-center gap-2">
+                  <MapPin className="h-4 w-4 text-emerald-400" />
+                  {t("توثيق فوري بالبصمة الجغرافية GPS", "Real-Time GPS Geotagged Verification")}
+                </h3>
+                <p className="text-xs text-gray-200 mt-0.5">
+                  {t(
+                    "التقاط صور محل الإقامة وعدّاد الكهرباء مع تثبيت الإحداثيات لمنع الزيارات الوهمية تماماً.",
+                    "Live photo capture with tamper-proof coordinates preventing proxy and fraudulent visits."
+                  )}
+                </p>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                  <ShieldCheck className="h-3.5 w-3.5" />
+                  {t("مشفر وموثق", "Encrypted & Verified")}
+                </span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
         {/* Steps */}
         <div className="relative">
