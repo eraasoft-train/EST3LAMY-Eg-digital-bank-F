@@ -1,10 +1,5 @@
 import { useEffect } from "react"
-
-interface PageMeta {
-  title: string
-  description: string
-  canonical?: string
-}
+import type { PageMeta } from "@/types/meta"
 
 const BASE_TITLE = "استعلامي — EST3LAMY"
 

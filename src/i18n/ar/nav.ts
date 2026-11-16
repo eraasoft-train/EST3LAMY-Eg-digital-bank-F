@@ -1,0 +1,16 @@
+export const navAr = {
+  solutions: "الحلول",
+  howItWorks: "كيف يعمل",
+  technology: "التقنية",
+  industries: "القطاعات",
+  about: "من نحن",
+  operationsPortal: "بوابة العمليات",
+  contact: "تواصل معنا",
+  privacy: "سياسة الخصوصية",
+  terms: "الشروط ومستوى الخدمة",
+  demoBadge: "تجريبي",
+  loginPortal: "بوابة العمليات",
+  language: "اللغة",
+  arabic: "العربية",
+  english: "English",
+}

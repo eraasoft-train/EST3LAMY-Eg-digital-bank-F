@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/context/language-context"
 import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { PageLoader } from "@/components/layout/page-loader"
+import { ErrorBoundary } from "@/components/common/error-boundary"
 
 const Home       = lazy(() => import("@/pages/home"))
 const About      = lazy(() => import("@/pages/about"))
@@ -35,21 +36,23 @@ function Router() {
     <>
       <Navbar />
       <main className="min-h-screen">
-        <Suspense fallback={<PageLoader />}>
-          <Switch>
-            <Route path="/"            component={Home} />
-            <Route path="/about"       component={About} />
-            <Route path="/solutions"   component={Solutions} />
-            <Route path="/industries"  component={Industries} />
-            <Route path="/how-it-works" component={HowItWorks} />
-            <Route path="/technology"  component={Technology} />
-            <Route path="/dashboard"   component={Dashboard} />
-            <Route path="/contact"     component={Contact} />
-            <Route path="/privacy"     component={Privacy} />
-            <Route path="/terms"       component={Terms} />
-            <Route                     component={NotFound} />
-          </Switch>
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<PageLoader />}>
+            <Switch>
+              <Route path="/"            component={Home} />
+              <Route path="/about"       component={About} />
+              <Route path="/solutions"   component={Solutions} />
+              <Route path="/industries"  component={Industries} />
+              <Route path="/how-it-works" component={HowItWorks} />
+              <Route path="/technology"  component={Technology} />
+              <Route path="/dashboard"   component={Dashboard} />
+              <Route path="/contact"     component={Contact} />
+              <Route path="/privacy"     component={Privacy} />
+              <Route path="/terms"       component={Terms} />
+              <Route                     component={NotFound} />
+            </Switch>
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <Footer />
     </>

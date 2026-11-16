@@ -1,7 +1,10 @@
 import * as React from "react"
 import { Building2, CreditCard, Home, Landmark, TrendingUp, Briefcase } from "lucide-react"
+import type { IndustryOffering } from "@/types/industry"
 
-export const industries = [
+export type { IndustryOffering }
+
+export const industries: IndustryOffering[] = [
   {
     title: "البنوك",
     titleEn: "Banks",

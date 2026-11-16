@@ -1,49 +1,6 @@
-export interface InvestigationCase {
-  id: string
-  institution: string
-  institutionEn: string
-  type: string
-  typeEn: string
-  subjectName: string
-  subjectNameEn: string
-  nationalId: string
-  governorate: string
-  governorateEn: string
-  address: string
-  workplace: string
-  status: "new" | "assigned" | "field_visit" | "under_review" | "approved" | "rejected"
-  priority: "عاجل" | "مرتفع" | "عادي"
-  priorityEn: "Urgent" | "High" | "Normal"
-  researcherId?: string
-  researcherName?: string
-  createdDate: string
-  visitDate?: string
-  gpsVerified: boolean
-  gpsCoords?: { lat: number; lng: number }
-  evidenceCount: number
-  notes?: string
-  qcChecklist: {
-    idVerified: boolean
-    addressMatched: boolean
-    workVerified: boolean
-    photosAttached: boolean
-    neighborInquiry: boolean
-  }
-}
+import type { InvestigationCase, FieldResearcher } from "@/types/investigation"
 
-export interface FieldResearcher {
-  id: string
-  name: string
-  nameEn: string
-  governorate: string
-  governorateEn: string
-  status: "available" | "in_field" | "offline"
-  activeCases: number
-  completedMonth: number
-  rating: number
-  lastActive: string
-  phoneMasked: string
-}
+export type { InvestigationCase, FieldResearcher }
 
 export const INITIAL_RESEARCHERS: FieldResearcher[] = [
   {

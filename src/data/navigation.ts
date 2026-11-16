@@ -1,10 +1,6 @@
-export interface NavItem {
-  name: string
-  nameEn: string
-  href: string
-  badge?: string
-  badgeEn?: string
-}
+import type { NavItem } from "@/types/navigation"
+
+export type { NavItem }
 
 export const navigation: NavItem[] = [
   { name: "الحلول",        nameEn: "Solutions",    href: "/solutions" },

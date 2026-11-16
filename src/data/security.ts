@@ -1,6 +1,9 @@
 import { Shield, MapPin, Camera, FileText, Bell, BarChart3 } from "lucide-react"
+import type { PlatformFeatureItem, ClientTypeItem } from "@/types/platform"
 
-export const platformFeatures = [
+export type { PlatformFeatureItem, ClientTypeItem }
+
+export const platformFeatures: PlatformFeatureItem[] = [
   {
     icon: Shield,
     title: "أمان بيانات المؤسسات",
@@ -45,7 +48,7 @@ export const platformFeatures = [
   },
 ]
 
-export const clientTypes = [
+export const clientTypes: ClientTypeItem[] = [
   {
     name: "البنوك",
     nameEn: "Banks",

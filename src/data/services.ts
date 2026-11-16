@@ -1,19 +1,8 @@
 import * as React from "react"
 import { Search, ClipboardCheck, BarChart3 } from "lucide-react"
+import type { ServicePlan } from "@/types/service"
 
-export interface ServicePlan {
-  title: string
-  titleEn: string
-  description: string
-  descriptionEn: string
-  icon: any
-  features: string[]
-  featuresEn: string[]
-  badge: string
-  badgeEn: string
-  price: string
-  priceEn: string
-}
+export type { ServicePlan }
 
 export const servicePlans: ServicePlan[] = [
   {

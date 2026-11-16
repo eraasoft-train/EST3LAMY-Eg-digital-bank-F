@@ -46,12 +46,8 @@ import {
 } from "lucide-react"
 import { usePageMeta } from "@/hooks/use-page-meta"
 import { useLanguage } from "@/context/language-context"
-import {
-  InvestigationCase,
-  FieldResearcher,
-  INITIAL_CASES,
-  INITIAL_RESEARCHERS,
-} from "@/data/portal"
+import type { InvestigationCase, FieldResearcher } from "@/types/investigation"
+import { INITIAL_CASES, INITIAL_RESEARCHERS } from "@/data/portal"
 
 export default function DashboardPage() {
   const { language, t } = useLanguage()

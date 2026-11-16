@@ -10,16 +10,7 @@ import { MessageSquare, CheckCircle, Mail, MapPin, Building2 } from "lucide-reac
 import { useState } from "react"
 import { usePageMeta } from "@/hooks/use-page-meta"
 import { useLanguage } from "@/context/language-context"
-
-interface ContactDraft {
-  firstName: string
-  lastName: string
-  email: string
-  phone: string
-  institution: string
-  sector: string
-  message: string
-}
+import type { ContactDraft } from "@/types/contact"
 
 const EMPTY_DRAFT: ContactDraft = {
   firstName: "", lastName: "", email: "", phone: "",

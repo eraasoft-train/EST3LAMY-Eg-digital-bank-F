@@ -1,7 +1,10 @@
 import * as React from "react"
 import { Shield, Target, Users, Zap } from "lucide-react"
+import type { ValueItem, MilestoneItem } from "@/types/about"
 
-export const values = [
+export type { ValueItem, MilestoneItem }
+
+export const values: ValueItem[] = [
   {
     title: "الدقة والموثوقية",
     titleEn: "Accuracy & Reliability",
@@ -32,7 +35,7 @@ export const values = [
   }
 ]
 
-export const milestones = [
+export const milestones: MilestoneItem[] = [
   {
     year: "البداية",
     yearEn: "The Start",

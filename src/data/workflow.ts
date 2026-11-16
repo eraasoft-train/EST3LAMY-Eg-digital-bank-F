@@ -1,16 +1,7 @@
 import { ClipboardList, UserCheck, MapPin, FileSearch, FileCheck, Send, BarChart3, Building } from "lucide-react"
+import type { WorkflowStep } from "@/types/workflow"
 
-export interface WorkflowStep {
-  id: string
-  step: number
-  name: string
-  nameEn: string
-  icon: any
-  description: string
-  descriptionEn: string
-  actor: string
-  actorEn: string
-}
+export type { WorkflowStep }
 
 export const workflowSteps: WorkflowStep[] = [
   {
