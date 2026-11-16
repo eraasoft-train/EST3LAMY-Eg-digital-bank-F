@@ -2,31 +2,44 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { workflowSteps } from "@/data/loan-tools"
+import { workflowSteps } from "@/data/workflow"
 import { usePageMeta } from "@/hooks/use-page-meta"
+import { useLanguage } from "@/context/language-context"
 import { Link } from "wouter"
+import { LayoutDashboard } from "lucide-react"
 
 export default function HowItWorksPage() {
+  const { language, t } = useLanguage()
+
   usePageMeta({
-    title: "كيف يعمل النظام — استعلامي | دليل التحقيق الميداني الرقمي",
-    description: "تعرف على 8 خطوات رقمية متكاملة في منصة استعلامي: من طلب التحقيق حتى تسليم التقرير الموثق للمؤسسة المالية.",
-    canonical: "https://est3lamy.com/how-it-works",
+    title: t(
+      "كيف يعمل النظام — استعلامي | دورة حياة التحقيق الميداني",
+      "How It Works — EST3LAMY | Field Investigation Lifecycle"
+    ),
+    description: t(
+      "تعرف على 8 خطوات رقمية متكاملة في منصة استعلامي: من استلام طلب التحقيق وحتى تسليم التقرير الموثق للمؤسسة المالية.",
+      "Explore the 8 integrated digital stages in EST3LAMY: from case submission to final verified report delivery."
+    ),
+    canonical: "https://est3lamy.vercel.app/how-it-works",
   })
 
   return (
-    <div className="bg-white dark:bg-gray-900 min-h-screen" dir="rtl">
+    <div className="bg-white dark:bg-gray-900 min-h-screen" dir={language === "ar" ? "rtl" : "ltr"}>
       {/* Hero */}
       <div className="bg-gradient-to-br from-blue-50 via-white to-slate-50 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 pt-24 pb-20 border-b border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <Badge variant="secondary" className="mb-5 px-3 py-1.5 rounded-full text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 border-none font-medium">
-              آلية العمل
+              {t("آلية ومنهجية العمل", "Methodology & Workflow")}
             </Badge>
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-5 tracking-tight">
-              من الطلب إلى التقرير
+              {t("من الطلب إلى التقرير المعتمد", "From Request to Delivered Report")}
             </h1>
-            <p className="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              8 خطوات رقمية متكاملة — شفافية كاملة، تتبع فوري، وتقرير موثق في كل مرحلة.
+            <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              {t(
+                "8 مراحل رقمية متسلسلة تضمن الشفافية والنزاهة وتمنع الزيارات الوهمية تماماً في كل حالة تحقيق.",
+                "8 structured digital stages guaranteeing transparency, GPS integrity, and eliminating fraudulent visits."
+              )}
             </p>
           </motion.div>
         </div>
@@ -36,9 +49,6 @@ export default function HowItWorksPage() {
 
         {/* Steps */}
         <div className="relative">
-          {/* Vertical timeline line */}
-          <div className="absolute right-[2.25rem] top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 via-blue-300 to-transparent dark:from-blue-700 dark:via-blue-900 hidden sm:block" />
-
           <div className="space-y-8">
             {workflowSteps.map((step, index) => {
               const Icon = step.icon
@@ -46,35 +56,41 @@ export default function HowItWorksPage() {
               return (
                 <motion.div
                   key={step.id}
-                  initial={{ opacity: 0, x: 20 }}
+                  initial={{ opacity: 0, x: language === "ar" ? 20 : -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.07, duration: 0.5 }}
+                  transition={{ delay: index * 0.06, duration: 0.5 }}
                   viewport={{ once: true }}
-                  className="relative flex gap-6"
+                  className="relative flex flex-col sm:flex-row gap-5 items-start"
                 >
-                  {/* Icon circle */}
-                  <div className="relative shrink-0">
-                    <div className={`w-18 h-18 w-[4.5rem] h-[4.5rem] rounded-2xl flex items-center justify-center shadow-md z-10 relative ${
-                      isLast ? "bg-emerald-600 shadow-emerald-500/20" : "bg-blue-600 shadow-blue-500/20"
-                    }`}>
-                      <Icon className="h-7 w-7 text-white" />
+                  {/* Icon badge */}
+                  <div className="shrink-0 flex items-center gap-3">
+                    <div
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-md ${
+                        isLast ? "bg-emerald-600 text-white" : "bg-blue-600 text-white"
+                      }`}
+                    >
+                      <Icon className="h-6 w-6" />
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <Card className="flex-1 border border-gray-100 dark:border-gray-800 hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300">
+                  {/* Content card */}
+                  <Card className="flex-1 border border-gray-100 dark:border-gray-800 hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300 w-full">
                     <CardContent className="p-6">
-                      <div className="flex items-center gap-3 mb-3 flex-wrap">
-                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded-full">
-                          الخطوة {step.step}
+                      <div className="flex items-center gap-3 mb-2 flex-wrap">
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2.5 py-1 rounded-full">
+                          {t(`المرحلة ${step.step}`, `Stage ${step.step}`)}
                         </span>
-                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">{step.name}</h3>
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                          {language === "ar" ? step.name : step.nameEn}
+                        </h3>
                       </div>
-                      <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">{step.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+                        {language === "ar" ? step.description : step.descriptionEn}
+                      </p>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-400">المسؤول:</span>
-                        <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-0.5 rounded-lg">
-                          {step.actor}
+                        <span className="text-xs text-gray-400">{t("الطرف المنفذ:", "Responsible Actor:")}</span>
+                        <span className="text-xs font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950 px-2.5 py-0.5 rounded-lg border border-blue-100 dark:border-blue-900">
+                          {language === "ar" ? step.actor : step.actorEn}
                         </span>
                       </div>
                     </CardContent>
@@ -85,31 +101,38 @@ export default function HowItWorksPage() {
           </div>
         </div>
 
-        {/* Summary box */}
+        {/* Summary CTA Box */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-900/20 dark:to-blue-900/10 rounded-2xl p-8 border border-blue-100 dark:border-blue-900/30"
+          className="mt-16 bg-gradient-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/40 dark:to-blue-900/20 rounded-3xl p-8 sm:p-10 border border-blue-100 dark:border-blue-800/60 text-center"
         >
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 text-center">النتيجة النهائية</h3>
-          <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed mb-6">
-            مؤسستك المالية تستلم تقريراً ميدانياً رقمياً موثقاً بالصور والبيانات — جاهز لدعم قرار الائتمان مباشرةً.
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            {t("جاهز لاختبار المنظومة في بيئة تشغيلية حقيقية؟", "Ready to Test the Platform Workflow Live?")}
+          </h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 max-w-xl mx-auto leading-relaxed mb-6">
+            {t(
+              "اكتشف كيف تدير بوابة استعلامي الحالات وتوزع المهام على الباحثين الميدانيين مع التدقيق الفوري لنتائج الزيارة.",
+              "See how EST3LAMY operations portal manages cases, dispatches field researchers, and audits evidence."
+            )}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/contact">
-              <Button size="lg" className="h-12 px-7 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold text-sm shadow-lg shadow-blue-500/20">
-                ابدأ شراكتك مع استعلامي
+            <Link href="/dashboard">
+              <Button size="lg" className="h-11 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs gap-2">
+                <LayoutDashboard className="h-4 w-4" />
+                {t("بوابة العمليات (محاكاة)", "Open Operations Demo")}
               </Button>
             </Link>
-            <Link href="/solutions">
-              <Button size="lg" variant="outline" className="h-12 px-7 rounded-xl bg-transparent">
-                تعرف على الحلول
+            <Link href="/contact">
+              <Button size="lg" variant="outline" className="h-11 px-6 rounded-xl text-xs font-semibold">
+                {t("طلب شراكة لمؤسستك", "Request Partnership")}
               </Button>
             </Link>
           </div>
         </motion.div>
+
       </div>
     </div>
   )

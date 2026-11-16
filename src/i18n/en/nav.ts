@@ -1,0 +1,16 @@
+export const navEn = {
+  solutions: "Solutions",
+  howItWorks: "How It Works",
+  technology: "Technology",
+  industries: "Industries",
+  about: "About Us",
+  operationsPortal: "Operations Portal",
+  contact: "Contact",
+  privacy: "Privacy Policy",
+  terms: "Terms & SLA",
+  demoBadge: "Demo",
+  loginPortal: "Portal Demo",
+  language: "Language",
+  arabic: "العربية",
+  english: "English",
+}
