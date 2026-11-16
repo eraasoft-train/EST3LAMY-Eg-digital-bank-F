@@ -8,13 +8,13 @@ import { Navbar } from "@/components/layout/navbar"
 import { Footer } from "@/components/layout/footer"
 import { PageLoader } from "@/components/layout/page-loader"
 
-const Home     = lazy(() => import("@/pages/home"))
-const About    = lazy(() => import("@/pages/about"))
-const Accounts = lazy(() => import("@/pages/accounts"))
-const Business = lazy(() => import("@/pages/business"))
-const Contact  = lazy(() => import("@/pages/contact"))
-const Finovia  = lazy(() => import("@/pages/finovia"))
-const NotFound = lazy(() => import("@/pages/not-found"))
+const Home       = lazy(() => import("@/pages/home"))
+const About      = lazy(() => import("@/pages/about"))
+const Solutions  = lazy(() => import("@/pages/solutions"))
+const Industries = lazy(() => import("@/pages/industries"))
+const HowItWorks = lazy(() => import("@/pages/how-it-works"))
+const Contact    = lazy(() => import("@/pages/contact"))
+const NotFound   = lazy(() => import("@/pages/not-found"))
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,13 +32,13 @@ function Router() {
       <main className="min-h-screen">
         <Suspense fallback={<PageLoader />}>
           <Switch>
-            <Route path="/"         component={Home} />
-            <Route path="/about"    component={About} />
-            <Route path="/accounts" component={Accounts} />
-            <Route path="/business" component={Business} />
-            <Route path="/contact"  component={Contact} />
-            <Route path="/finovia"  component={Finovia} />
-            <Route                  component={NotFound} />
+            <Route path="/"            component={Home} />
+            <Route path="/about"       component={About} />
+            <Route path="/solutions"   component={Solutions} />
+            <Route path="/industries"  component={Industries} />
+            <Route path="/how-it-works" component={HowItWorks} />
+            <Route path="/contact"     component={Contact} />
+            <Route                     component={NotFound} />
           </Switch>
         </Suspense>
       </main>

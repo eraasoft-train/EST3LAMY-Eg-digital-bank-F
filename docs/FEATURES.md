@@ -1,55 +1,30 @@
-# 🌟 Core Features & Modules
+# Platform Features — EST3LAMY
 
-Finovia provides a modern suite of personal and commercial banking interfaces designed with ease of use and premium presentation in mind.
+EST3LAMY provides a modern suite of digital field investigation interfaces for financial institutions.
 
----
+## Investigation Case Management
+Smart case intake, automatic assignment to field researchers, real-time status tracking.
 
-## 💵 Interactive Loan Payment Estimator
+## Field Researcher Mobile App
+Mobile workflow for researchers: receive cases, navigate to location, capture evidence, submit reports.
 
-Found under the `/finovia` path, this interactive loan estimator lets users customize and simulate their financing conditions instantly.
+## Live Location Tracking
+GPS tracking of field researchers in real time for verification of actual field visits.
 
-*   **Dynamic Loan Slider**: Slide between `$0` and `$1,000,000` to adjust principal.
-*   **State Persistence**: Utilizing the custom `useLocalStorage` hook, the selected loan value is stored in the browser. Refreshing or navigating back to the page restores the user's last input.
-*   **Real-time Math**: Calculates:
-    *   Estimated Monthly Payment (using a 30-year fixed rate at 5.0% APR standard mortgage formula).
-    *   Total Principal + Interest paid over the lifetime.
-    *   Total standalone Interest paid.
-*   **Responsive Application**: Click to prequalify or directly choose custom loan products (Mortgage, Auto Loans, Personal Loans, Business Financing).
+## Digital Evidence Collection
+In-app photo capture and document upload directly from the field visit location.
 
----
+## Quality Control & Report Review
+Report review workflow before final delivery ensures accuracy and completeness.
 
-## 💳 Personal Accounts & Cards Offerings
+## Analytics Dashboard (`/solutions`)
+Live performance indicators: cases completed, researcher activity, average completion time.
 
-Located at `/accounts`, showcasing Finovia's personal banking products.
+## How It Works (`/how-it-works`)
+8-step interactive workflow showing the complete investigation lifecycle.
 
-*   **Diverse Checking & Savings Tiers**: Compare interest rates (APY), minimum opening balances, monthly fees, and distinct features.
-*   **Card Tier Options**: Showcase cards ranging from checking debit up to exclusive premium metal credit cards.
-*   **Onboarding Path**: Step-by-step guidance to open checking or savings accounts online in minutes.
+## Industries (`/industries`)
+Dedicated content for Banks, Consumer Finance, Leasing, Mortgage Finance, Microfinance, Fintech.
 
----
-
-## 🏢 Commercial & Business Banking
-
-Located at `/business`, customized for corporate, startup, and small-business owners.
-
-*   **Treasury & Capital Management**: Insights into cash flow forecasting, liquidity investments, and wire management.
-*   **Commercial Lending & Lines of Credit**: Scalable credit lines for machinery, commercial real estate, or payroll financing.
-*   **Custom Merchant Processing**: Point-of-Sale (POS) and API-driven web checkout integrations.
-
----
-
-## 🔒 Advanced Security & Encryption Showcase
-
-Securing user data and transactions is at the center of Finovia.
-
-*   **256-Bit SSL/TLS Encryption**: Protects all communication between clients and APIs.
-*   **Multifactor Authentication (MFA)**: Built-in structures to enable security keys, authenticator apps, and SMS OTP codes.
-*   **Zero Liability Guarantees**: Complete coverage for unauthorized card activities.
-
----
-
-## 🎨 Theme Customization & Accessibility
-
-*   **Dark & Light Mode Integration**: Seamlessly switch themes via the `ThemeProvider` wrapping the system. Custom Tailwind classes handle clean color translations.
-*   **Radix UI Accessibility**: Interactive widgets (accordions, dialogs, sheets) are strictly keyboard navigable and screen-reader accessible.
-*   **High Performance Page Loader**: Interactive visual loading animation keeps transitions smooth and seamless.
+## Contact & Partnership (`/contact`)
+Institution-focused inquiry form with sector selection and auto-saved draft.

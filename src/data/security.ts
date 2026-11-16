@@ -1,55 +1,73 @@
-import { Shield, Lock, Eye, Bell, Fingerprint, Smartphone } from "lucide-react"
+import { Shield, MapPin, Camera, FileText, Bell, BarChart3 } from "lucide-react"
 
-export const securityFeatures = [
+export const platformFeatures = [
   {
     icon: Shield,
-    title: "Bank-Grade Security",
-    description: "256-bit SSL encryption protects all your data and transactions",
+    title: "أمان بيانات المؤسسات",
+    titleEn: "Institution Data Security",
+    description: "بيانات العملاء والحالات محمية بتشفير عالي المستوى وصلاحيات وصول دقيقة",
+    descriptionEn: "Client and case data protected with high-level encryption and precise access controls",
   },
   {
-    icon: Fingerprint,
-    title: "Biometric Login",
-    description: "Secure access with fingerprint and face recognition",
+    icon: MapPin,
+    title: "تتبع الموقع الفوري",
+    titleEn: "Live Location Tracking",
+    description: "تتبع مواقع الباحثين الميدانيين في الوقت الفعلي لضمان التحقق الميداني الفعلي",
+    descriptionEn: "Real-time field researcher location tracking to ensure actual field verification",
+  },
+  {
+    icon: Camera,
+    title: "جمع الأدلة الرقمية",
+    titleEn: "Digital Evidence Collection",
+    description: "التقاط صور وأدلة موثقة من الموقع مباشرة عبر تطبيق الهاتف المحمول",
+    descriptionEn: "Capture photos and documented evidence directly from the site via the mobile app",
+  },
+  {
+    icon: FileText,
+    title: "تقارير رقمية موثقة",
+    titleEn: "Documented Digital Reports",
+    description: "توليد تقارير تحقيق شاملة وموثقة تُسلَّم للمؤسسة المالية فور الإنجاز",
+    descriptionEn: "Generate comprehensive documented investigation reports delivered to the financial institution upon completion",
   },
   {
     icon: Bell,
-    title: "Real-time Alerts",
-    description: "Instant notifications for all account activity",
+    title: "إشعارات وتنبيهات فورية",
+    titleEn: "Instant Notifications & Alerts",
+    description: "تنبيهات لحظية عند تحديث حالة أي طلب تحقيق أو استلام تقرير جديد",
+    descriptionEn: "Instant alerts when any investigation request status is updated or a new report is received",
   },
   {
-    icon: Eye,
-    title: "Fraud Monitoring",
-    description: "24/7 AI-powered fraud detection and prevention",
-  },
-  {
-    icon: Lock,
-    title: "Account Protection",
-    description: "Multi-factor authentication and account lockdown features",
-  },
-  {
-    icon: Smartphone,
-    title: "Secure Mobile App",
-    description: "End-to-end encryption for mobile banking",
+    icon: BarChart3,
+    title: "لوحات تحليل الأداء",
+    titleEn: "Performance Analytics Dashboards",
+    description: "متابعة مؤشرات الأداء للباحثين الميدانيين وجودة التقارير وأوقات الإنجاز",
+    descriptionEn: "Monitor field researcher performance indicators, report quality and completion times",
   },
 ]
 
-export const testimonials = [
+export const clientTypes = [
   {
-    name: "Sarah Johnson",
-    role: "Small Business Owner",
-    content: "I've been banking with Finovia for 5 years. Their security features give me complete peace of mind.",
-    years: "5 years",
+    name: "البنوك",
+    nameEn: "Banks",
+    description: "تحقيق ميداني لطلبات الائتمان والتمويل",
+    descriptionEn: "Field investigation for credit and financing requests",
   },
   {
-    name: "Michael Chen",
-    role: "Software Engineer",
-    content: "As someone in tech, I appreciate Finovia's commitment to cutting-edge security technology.",
-    years: "3 years",
+    name: "شركات التمويل الاستهلاكي",
+    nameEn: "Consumer Finance Companies",
+    description: "التحقق من بيانات المتقدمين وعناوينهم",
+    descriptionEn: "Verify applicant data and addresses",
   },
   {
-    name: "Emily Rodriguez",
-    role: "Financial Advisor",
-    content: "I recommend Finovia to all my clients. Their security standards are unmatched in the industry.",
-    years: "7 years",
+    name: "شركات التأجير التمويلي",
+    nameEn: "Leasing Companies",
+    description: "تقييم ميداني للعملاء والأصول",
+    descriptionEn: "Field assessment of clients and assets",
+  },
+  {
+    name: "شركات التمويل متناهي الصغر",
+    nameEn: "Microfinance Companies",
+    description: "تحقيق سريع لقرارات ائتمانية أسرع",
+    descriptionEn: "Fast investigation for quicker credit decisions",
   },
 ]

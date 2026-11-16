@@ -1,25 +1,25 @@
-import { HeroSection } from "@/components/sections/hero-section"
-import { AccountOfferings } from "@/components/sections/account-offerings"
-import { FinoviaTools } from "@/components/sections/loan-tools"
-import { SecuritySection } from "@/components/sections/security-section"
-import { DashboardPreview } from "@/components/sections/dashboard-preview"
-import { OnboardingSection } from "@/components/sections/onboarding-section"
-import { usePageMeta } from "@/hooks/use-page-meta"
+import { HeroSection }         from "@/components/sections/hero-section"
+import { PlatformFeatures }    from "@/components/sections/account-offerings"
+import { WorkflowSection }     from "@/components/sections/loan-tools"
+import { TechSection }         from "@/components/sections/security-section"
+import { DashboardPreview }    from "@/components/sections/dashboard-preview"
+import { ClientsSection }      from "@/components/sections/onboarding-section"
+import { usePageMeta }         from "@/hooks/use-page-meta"
 
 export default function Home() {
   usePageMeta({
-    title: "Finovia Banking",
-    description: "Finovia offers FDIC-insured checking, 4.50% APY savings, personal loans, and business banking with 256-bit encryption, zero monthly fees, and 24/7 expert support.",
-    canonical: "https://finovia.replit.app/",
+    title: "استعلامي — منصة التحقيق الميداني الرقمي للمؤسسات المالية",
+    description: "استعلامي منصة رقمية متكاملة لرقمنة عملية التحقيق الميداني والتحقق من العملاء للبنوك وشركات التمويل في مصر.",
+    canonical: "https://est3lamy.com/",
   })
   return (
     <div className="flex flex-col">
       <HeroSection />
-      <AccountOfferings />
-      <FinoviaTools />
-      <SecuritySection />
+      <PlatformFeatures />
+      <WorkflowSection />
+      <TechSection />
       <DashboardPreview />
-      <OnboardingSection />
+      <ClientsSection />
     </div>
   )
 }
