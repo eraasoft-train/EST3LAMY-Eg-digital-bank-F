@@ -52,6 +52,7 @@ function Router() {
               <Route path="/contact"     component={Contact} />
               <Route path="/privacy"     component={Privacy} />
               <Route path="/terms"       component={Terms} />
+              <Route path="/404"         component={NotFound} />
               <Route                     component={NotFound} />
             </Switch>
           </Suspense>
