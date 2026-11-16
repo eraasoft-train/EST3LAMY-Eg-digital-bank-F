@@ -193,7 +193,7 @@ export default function DashboardPage() {
         />
 
         {/* Stats + content */}
-        <main className="flex-1 overflow-y-auto">
+        <main className="flex-1 overflow-y-auto [scrollbar-gutter:stable]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
             {/* KPI stats always visible */}
             <StatsGrid cases={cases} />

@@ -268,8 +268,24 @@
 }
 
 /* ============================================================
-   CUSTOM SCROLLBAR — thin, blue-tinted, rounded
+   CUSTOM SCROLLBAR & ANTI-LAYOUT-SHIFT
+   Stabilizes scrollbar space across all browsers, preventing
+   Radix dropdowns/dialogs from causing jittery layout shifts
+   or hiding the scrollbar track.
    ============================================================ */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* Prevent react-remove-scroll / Radix from forcibly injecting margins or hiding the scrollbar track */
+body[data-scroll-locked] {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  overflow: visible !important;
+}
 
 /* Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
